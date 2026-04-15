@@ -646,6 +646,12 @@ section {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+.portfolio-desc {
+  font-size: 13px;
+  color: #bbb;
+  line-height: 1.6;
+  margin-top: 8px;
+}
 
 /* ── CONTACT ── */
 .contact-grid {
