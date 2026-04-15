@@ -114,9 +114,6 @@
     <h1>P2P <span style="color:#F5C400">Admin</span></h1>
     <p>Gestisci il portfolio del sito. Carica foto, modifica descrizioni e pubblica le modifiche.</p>
 
-    <label for="adminPwd">Password</label>
-    <input type="password" id="adminPwd" placeholder="Password admin">
-
     <label for="ghToken">GitHub Token</label>
     <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
     <div class="help">
@@ -176,8 +173,7 @@
     owner: 'Lucjk6',
     repo: 'p2ptechnology',
     branch: 'main',
-    root: '',
-    password: 'p2p2026'
+    root: ''
   };
 
   var token = '';
@@ -620,16 +616,10 @@
 
   // ── Login ──
   document.getElementById('loginBtn').addEventListener('click', function() {
-    var pwd = document.getElementById('adminPwd').value;
     var tk = document.getElementById('ghToken').value.trim();
     var errEl = document.getElementById('loginError');
 
-    if (pwd !== CONFIG.password) {
-      errEl.textContent = 'Password errata.';
-      errEl.className = 'status error show';
-      return;
-    }
-    if (!tk || !tk.startsWith('ghp_')) {
+    if (!tk || (!tk.startsWith('ghp_') && !tk.startsWith('github_pat_'))) {
       errEl.textContent = 'Inserisci un GitHub Token valido (inizia con ghp_).';
       errEl.className = 'status error show';
       return;
@@ -657,10 +647,6 @@
       });
   });
 
-  // Password enter key
-  document.getElementById('adminPwd').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('ghToken').focus();
-  });
   document.getElementById('ghToken').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') document.getElementById('loginBtn').click();
   });
