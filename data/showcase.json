@@ -1,8 +1,26 @@
 [
-  { "title": "Concerto Estate 2024", "image": "" },
-  { "title": "Fashion Show", "image": "" },
-  { "title": "LED Wall Corporate", "image": "" },
-  { "title": "Expo Stand", "image": "" },
-  { "title": "Festival Elettronica", "image": "" },
-  { "title": "Gala Dinner", "image": "" }
+  {
+    "title": "Chilling",
+    "image": "images/showcase/sc-chilling-1776285039102.jpg"
+  },
+  {
+    "title": "Sunset",
+    "image": "images/showcase/sc-sunset-1776285040489.jpg"
+  },
+  {
+    "title": "LED Wall Corporate",
+    "image": ""
+  },
+  {
+    "title": "Expo Stand",
+    "image": ""
+  },
+  {
+    "title": "Festival Elettronica",
+    "image": ""
+  },
+  {
+    "title": "Gala Dinner",
+    "image": ""
+  }
 ]
