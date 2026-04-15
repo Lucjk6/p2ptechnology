@@ -201,4 +201,93 @@
       cookieBanner.classList.add('hidden');
     });
   }
+
+  // ── Dynamic portfolio loading ──
+  var GRADIENTS = {
+    concert: 'linear-gradient(135deg, #0a0a0a 0%, #1a1200 50%, #0a0a0a 100%)',
+    fashion: 'linear-gradient(135deg, #0a0a0a 0%, #0d0a1a 50%, #0a0a0a 100%)',
+    led:     'linear-gradient(135deg, #0a0a0a 0%, #001a1a 50%, #0a0a0a 100%)',
+    expo:    'linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%)'
+  };
+  var FALLBACK_PROJECTS = [
+    { title: 'Concerto Estate 2024', category: 'Evento \u00b7 Milano', description: 'Impianto luci completo con movinghead, LED wall e gestione scenografica.', image: '', gradient: 'concert' },
+    { title: 'Fashion Show', category: 'Scenografia \u00b7 Torino', description: 'Scenografia immersiva con proiezioni e giochi di luce.', image: '', gradient: 'fashion' },
+    { title: 'LED Wall Corporate', category: 'Installazione', description: 'LED wall ad alta risoluzione per conferenza aziendale.', image: '', gradient: 'led' },
+    { title: 'Expo Stand', category: 'Impianto \u00b7 Fiera', description: 'Impianto elettrico dedicato per stand fieristico.', image: '', gradient: 'expo' }
+  ];
+
+  function escapeHtml(str) {
+    var d = document.createElement('div');
+    d.textContent = str || '';
+    return d.innerHTML;
+  }
+
+  function renderPortfolio(projects) {
+    var grid = document.getElementById('portfolioGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    projects.forEach(function (p, i) {
+      var delay = i > 0 ? ' fade-in-delay-' + Math.min(i, 3) : '';
+      var title = escapeHtml(p.title);
+      var cat = escapeHtml(p.category);
+      var desc = escapeHtml(p.description);
+      var grad = GRADIENTS[p.gradient] || GRADIENTS.concert;
+
+      var item = document.createElement('div');
+      item.className = 'portfolio-item fade-in' + delay;
+
+      if (p.image) {
+        item.innerHTML =
+          '<img src="' + escapeHtml(p.image) + '" alt="' + title + '" class="portfolio-img" loading="lazy">' +
+          '<div class="portfolio-overlay">' +
+            '<span>' + cat + '</span>' +
+            '<h4>' + title + '</h4>' +
+            '<p class="portfolio-desc">' + desc + '</p>' +
+          '</div>';
+      } else {
+        item.innerHTML =
+          '<div class="portfolio-placeholder" style="background:' + grad + '">' +
+            '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
+            '<span>' + title + '</span>' +
+          '</div>' +
+          '<div class="portfolio-overlay">' +
+            '<span>' + cat + '</span>' +
+            '<h4>' + title + '</h4>' +
+            '<p class="portfolio-desc">' + desc + '</p>' +
+          '</div>';
+      }
+
+      grid.appendChild(item);
+    });
+
+    // Observe new elements for fade-in
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      grid.querySelectorAll('.fade-in').forEach(function (el) { obs.observe(el); });
+    }
+  }
+
+  function loadPortfolio() {
+    fetch('data/portfolio.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .then(function (projects) {
+        renderPortfolio(projects);
+      })
+      .catch(function () {
+        renderPortfolio(FALLBACK_PROJECTS);
+      });
+  }
+
+  loadPortfolio();
 })();

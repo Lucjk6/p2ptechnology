@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Concerto Estate 2024",
+    "category": "Evento · Milano",
+    "description": "Impianto luci completo con 48 movinghead, LED wall e gestione scenografica per evento open-air da 5.000 persone.",
+    "image": "",
+    "gradient": "concert"
+  },
+  {
+    "title": "Fashion Show",
+    "category": "Scenografia · Torino",
+    "description": "Scenografia immersiva con proiezioni e giochi di luce per sfilata di moda in location industriale.",
+    "image": "",
+    "gradient": "fashion"
+  },
+  {
+    "title": "LED Wall Corporate",
+    "category": "Installazione",
+    "description": "Installazione LED wall ad alta risoluzione per conferenza aziendale con contenuti dinamici e interattivi.",
+    "image": "",
+    "gradient": "led"
+  },
+  {
+    "title": "Expo Stand",
+    "category": "Impianto · Fiera",
+    "description": "Progettazione e realizzazione impianto elettrico dedicato per stand fieristico con illuminazione scenografica.",
+    "image": "",
+    "gradient": "expo"
+  }
+]

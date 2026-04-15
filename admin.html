@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Portfolio — P2P Technology</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#f0f0f0;min-height:100vh}
+
+    /* Login */
+    .login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+    .login-box{background:#111;border:1px solid #222;border-radius:12px;padding:40px;max-width:420px;width:100%}
+    .login-box h1{font-size:24px;margin-bottom:8px}
+    .login-box p{color:#888;font-size:13px;margin-bottom:24px;line-height:1.6}
+    .login-box label{display:block;font-size:12px;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:16px}
+    .login-box input{width:100%;padding:12px 16px;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#f0f0f0;font-size:14px;font-family:inherit}
+    .login-box input:focus{outline:none;border-color:#F5C400}
+    .login-box .help{font-size:11px;color:#666;margin-top:4px;line-height:1.5}
+    .login-box .help a{color:#F5C400}
+
+    /* Buttons */
+    .btn{padding:12px 24px;border:none;border-radius:8px;font-family:inherit;font-size:14px;cursor:pointer;transition:all 0.3s}
+    .btn-primary{background:#F5C400;color:#0a0a0a;font-weight:500}
+    .btn-primary:hover{background:#ffd633}
+    .btn-primary:disabled{opacity:0.5;cursor:not-allowed}
+    .btn-danger{background:transparent;border:1px solid #ff4444;color:#ff4444;padding:8px 16px;font-size:12px}
+    .btn-danger:hover{background:#ff4444;color:#fff}
+    .btn-secondary{background:#1e1e1e;color:#f0f0f0;border:1px solid #333}
+    .btn-secondary:hover{border-color:#F5C400}
+    .btn-full{width:100%;margin-top:24px}
+
+    /* Admin panel */
+    .admin{display:none;max-width:900px;margin:0 auto;padding:24px}
+    .admin-header{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1e1e1e;margin-bottom:24px}
+    .admin-header h1{font-size:20px}
+    .admin-header h1 span{color:#F5C400}
+
+    /* Status */
+    .status{padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:16px;display:none}
+    .status.show{display:block}
+    .status.info{background:#1a1a2e;border:1px solid #333366;color:#9999ff}
+    .status.success{background:#0a1a0a;border:1px solid #336633;color:#66cc66}
+    .status.error{background:#1a0a0a;border:1px solid #663333;color:#ff6666}
+
+    /* Project cards */
+    .projects{display:flex;flex-direction:column;gap:16px}
+    .project-card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;display:grid;grid-template-columns:200px 1fr auto;gap:20px;align-items:start}
+    .project-card.new{border-style:dashed;border-color:#F5C400;opacity:0.8}
+
+    /* Image area */
+    .img-area{width:200px;aspect-ratio:16/9;background:#0a0a0a;border:2px dashed #333;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative;transition:border-color 0.3s}
+    .img-area:hover{border-color:#F5C400}
+    .img-area img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .img-area .upload-hint{text-align:center;color:#666;font-size:11px;padding:8px}
+    .img-area .upload-hint svg{display:block;margin:0 auto 6px}
+    .img-area input[type=file]{display:none}
+
+    /* Fields */
+    .fields{display:flex;flex-direction:column;gap:12px}
+    .fields label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px}
+    .fields input,.fields textarea{width:100%;padding:10px 14px;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#f0f0f0;font-size:14px;font-family:inherit;resize:vertical}
+    .fields input:focus,.fields textarea:focus{outline:none;border-color:#F5C400}
+    .fields textarea{min-height:70px}
+
+    .card-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+    .card-order{display:flex;gap:4px}
+    .card-order button{background:#1e1e1e;border:1px solid #333;color:#999;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+    .card-order button:hover{border-color:#F5C400;color:#F5C400}
+
+    .add-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;background:transparent;border:2px dashed #333;border-radius:12px;color:#888;font-size:14px;cursor:pointer;transition:all 0.3s;width:100%;font-family:inherit}
+    .add-btn:hover{border-color:#F5C400;color:#F5C400}
+
+    .gradient-select{width:100%;padding:10px 14px;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#f0f0f0;font-size:14px;font-family:inherit}
+    .gradient-select:focus{outline:none;border-color:#F5C400}
+
+    @media(max-width:768px){
+      .project-card{grid-template-columns:1fr;gap:12px}
+      .img-area{width:100%}
+      .card-actions{flex-direction:row;justify-content:space-between;width:100%}
+      .admin-header{flex-direction:column;gap:12px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <h1>P2P <span style="color:#F5C400">Admin</span></h1>
+    <p>Gestisci il portfolio del sito. Carica foto, modifica descrizioni e pubblica le modifiche.</p>
+
+    <label for="adminPwd">Password</label>
+    <input type="password" id="adminPwd" placeholder="Password admin">
+
+    <label for="ghToken">GitHub Token</label>
+    <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
+    <div class="help">
+      Serve per salvare le modifiche. Crea un token su
+      <a href="https://github.com/settings/tokens" target="_blank">GitHub Settings → Tokens</a>
+      con permesso <strong>repo</strong>.
+    </div>
+
+    <div id="loginError" class="status error" style="margin-top:16px"></div>
+    <button class="btn btn-primary btn-full" id="loginBtn">Accedi</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin" id="adminPanel">
+  <div class="admin-header">
+    <h1>Portfolio <span>Manager</span></h1>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-secondary" id="reloadBtn">Ricarica</button>
+      <button class="btn btn-primary" id="publishBtn">Pubblica modifiche</button>
+    </div>
+  </div>
+
+  <div id="statusBar" class="status"></div>
+
+  <div class="projects" id="projectsList"></div>
+
+  <button class="add-btn" id="addBtn" style="margin-top:16px">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Aggiungi progetto
+  </button>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var CONFIG = {
+    owner: 'Lucjk6',
+    repo: 'p2ptechnology',
+    branch: 'main',
+    root: 'p2p-technology',
+    password: 'p2p2026'
+  };
+
+  var token = '';
+  var portfolio = [];
+  var pendingImages = {};
+  var jsonSha = null;
+
+  // ── Helpers ──
+  function utf8ToBase64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function base64ToUtf8(b64) {
+    return decodeURIComponent(escape(atob(b64)));
+  }
+  function slugify(str) {
+    return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  function showStatus(msg, type) {
+    var el = document.getElementById('statusBar');
+    el.textContent = msg;
+    el.className = 'status show ' + type;
+    if (type === 'success') setTimeout(function(){ el.className = 'status'; }, 5000);
+  }
+  function escapeHtml(str) {
+    var d = document.createElement('div');
+    d.textContent = str || '';
+    return d.innerHTML;
+  }
+
+  // ── GitHub API ──
+  function ghApi(path, method, body) {
+    var opts = {
+      method: method || 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    };
+    if (body) {
+      opts.headers['Content-Type'] = 'application/json';
+      opts.body = JSON.stringify(body);
+    }
+    return fetch('https://api.github.com/repos/' + CONFIG.owner + '/' + CONFIG.repo + '/contents/' + CONFIG.root + '/' + path + '?ref=' + CONFIG.branch, opts);
+  }
+
+  // ── Image resize ──
+  function resizeImage(file) {
+    return new Promise(function(resolve) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+          var maxW = 1920, maxH = 1080;
+          var w = img.width, h = img.height;
+          if (w > maxW) { h = h * maxW / w; w = maxW; }
+          if (h > maxH) { w = w * maxH / h; h = maxH; }
+          var canvas = document.createElement('canvas');
+          canvas.width = Math.round(w);
+          canvas.height = Math.round(h);
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          var base64 = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
+          resolve(base64);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ── Load portfolio from GitHub ──
+  function loadPortfolio() {
+    showStatus('Caricamento portfolio...', 'info');
+    return ghApi('data/portfolio.json')
+      .then(function(res) {
+        if (res.ok) return res.json();
+        throw new Error('Not found');
+      })
+      .then(function(data) {
+        jsonSha = data.sha;
+        portfolio = JSON.parse(base64ToUtf8(data.content));
+        pendingImages = {};
+        renderItems();
+        showStatus('Portfolio caricato (' + portfolio.length + ' progetti)', 'success');
+      })
+      .catch(function() {
+        portfolio = [];
+        jsonSha = null;
+        pendingImages = {};
+        renderItems();
+        showStatus('Nessun portfolio trovato. Aggiungi il primo progetto!', 'info');
+      });
+  }
+
+  // ── Render items ──
+  function renderItems() {
+    var list = document.getElementById('projectsList');
+    list.innerHTML = '';
+
+    portfolio.forEach(function(item, i) {
+      var card = document.createElement('div');
+      card.className = 'project-card';
+
+      var imgSrc = '';
+      if (pendingImages[i]) {
+        imgSrc = 'data:image/jpeg;base64,' + pendingImages[i];
+      } else if (item.image) {
+        imgSrc = item.image;
+      }
+
+      card.innerHTML =
+        '<div class="img-area" data-index="' + i + '">' +
+          (imgSrc ? '<img src="' + imgSrc + '" alt="Preview">' : '') +
+          '<div class="upload-hint"' + (imgSrc ? ' style="display:none"' : '') + '>' +
+            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>' +
+            'Clicca per caricare foto' +
+          '</div>' +
+          '<input type="file" accept="image/*">' +
+        '</div>' +
+        '<div class="fields">' +
+          '<div><label>Titolo</label><input type="text" data-field="title" value="' + escapeHtml(item.title) + '"></div>' +
+          '<div><label>Categoria</label><input type="text" data-field="category" value="' + escapeHtml(item.category) + '" placeholder="Es: Evento · Milano"></div>' +
+          '<div><label>Descrizione</label><textarea data-field="description">' + escapeHtml(item.description) + '</textarea></div>' +
+          '<div><label>Colore placeholder</label><select class="gradient-select" data-field="gradient">' +
+            '<option value="concert"' + (item.gradient === 'concert' ? ' selected' : '') + '>Oro (Concerti)</option>' +
+            '<option value="fashion"' + (item.gradient === 'fashion' ? ' selected' : '') + '>Viola (Fashion)</option>' +
+            '<option value="led"' + (item.gradient === 'led' ? ' selected' : '') + '>Ciano (Tech)</option>' +
+            '<option value="expo"' + (item.gradient === 'expo' ? ' selected' : '') + '>Rosso (Expo)</option>' +
+          '</select></div>' +
+        '</div>' +
+        '<div class="card-actions">' +
+          '<div class="card-order">' +
+            '<button title="Sposta su" data-move="up" data-index="' + i + '">&#9650;</button>' +
+            '<button title="Sposta giù" data-move="down" data-index="' + i + '">&#9660;</button>' +
+          '</div>' +
+          '<button class="btn btn-danger" data-delete="' + i + '">Elimina</button>' +
+        '</div>';
+
+      list.appendChild(card);
+    });
+
+    // Bind events
+    bindCardEvents();
+  }
+
+  function bindCardEvents() {
+    // Image upload
+    document.querySelectorAll('.img-area').forEach(function(area) {
+      var input = area.querySelector('input[type=file]');
+      area.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'INPUT') input.click();
+      });
+      input.addEventListener('change', function() {
+        if (!input.files.length) return;
+        var idx = parseInt(area.getAttribute('data-index'));
+        resizeImage(input.files[0]).then(function(base64) {
+          pendingImages[idx] = base64;
+          var img = area.querySelector('img');
+          if (!img) {
+            img = document.createElement('img');
+            img.alt = 'Preview';
+            area.appendChild(img);
+          }
+          img.src = 'data:image/jpeg;base64,' + base64;
+          area.querySelector('.upload-hint').style.display = 'none';
+        });
+      });
+    });
+
+    // Text fields
+    document.querySelectorAll('.fields input, .fields textarea, .fields select').forEach(function(el) {
+      el.addEventListener('input', function() {
+        var card = el.closest('.project-card');
+        var idx = Array.from(card.parentNode.children).indexOf(card);
+        var field = el.getAttribute('data-field');
+        if (field && portfolio[idx]) {
+          portfolio[idx][field] = el.value;
+        }
+      });
+    });
+
+    // Delete
+    document.querySelectorAll('[data-delete]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(btn.getAttribute('data-delete'));
+        if (confirm('Eliminare "' + portfolio[idx].title + '"?')) {
+          portfolio.splice(idx, 1);
+          // Remap pending images
+          var newPending = {};
+          Object.keys(pendingImages).forEach(function(k) {
+            var ki = parseInt(k);
+            if (ki < idx) newPending[ki] = pendingImages[ki];
+            else if (ki > idx) newPending[ki - 1] = pendingImages[ki];
+          });
+          pendingImages = newPending;
+          renderItems();
+        }
+      });
+    });
+
+    // Move up/down
+    document.querySelectorAll('[data-move]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var idx = parseInt(btn.getAttribute('data-index'));
+        var dir = btn.getAttribute('data-move');
+        var newIdx = dir === 'up' ? idx - 1 : idx + 1;
+        if (newIdx < 0 || newIdx >= portfolio.length) return;
+        // Swap items
+        var temp = portfolio[idx];
+        portfolio[idx] = portfolio[newIdx];
+        portfolio[newIdx] = temp;
+        // Swap pending images
+        var tempImg = pendingImages[idx];
+        pendingImages[idx] = pendingImages[newIdx];
+        pendingImages[newIdx] = tempImg;
+        if (!pendingImages[idx]) delete pendingImages[idx];
+        if (!pendingImages[newIdx]) delete pendingImages[newIdx];
+        renderItems();
+      });
+    });
+  }
+
+  // ── Publish ──
+  function publish() {
+    var btn = document.getElementById('publishBtn');
+    btn.disabled = true;
+    btn.textContent = 'Pubblicazione...';
+    showStatus('Pubblicazione in corso...', 'info');
+
+    var imageUploads = Promise.resolve();
+    var indices = Object.keys(pendingImages);
+
+    // Upload images sequentially
+    function uploadNext(i) {
+      if (i >= indices.length) return Promise.resolve();
+      var idx = parseInt(indices[i]);
+      var item = portfolio[idx];
+      var filename = slugify(item.title) + '-' + Date.now() + '.jpg';
+      var path = 'images/portfolio/' + filename;
+
+      showStatus('Caricamento immagine ' + (i + 1) + '/' + indices.length + '...', 'info');
+
+      // Check if old image exists to get SHA
+      var body = {
+        message: 'Upload: ' + filename,
+        content: pendingImages[idx],
+        branch: CONFIG.branch
+      };
+
+      return ghApi(path, 'PUT', body)
+        .then(function(res) {
+          if (!res.ok) throw new Error('Upload immagine fallito');
+          item.image = 'images/portfolio/' + filename;
+          return uploadNext(i + 1);
+        });
+    }
+
+    uploadNext(0)
+      .then(function() {
+        showStatus('Salvataggio portfolio...', 'info');
+        var jsonContent = utf8ToBase64(JSON.stringify(portfolio, null, 2));
+        var body = {
+          message: 'Aggiorna portfolio',
+          content: jsonContent,
+          branch: CONFIG.branch
+        };
+        if (jsonSha) body.sha = jsonSha;
+        return ghApi('data/portfolio.json', 'PUT', body);
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Salvataggio JSON fallito');
+        return res.json();
+      })
+      .then(function(data) {
+        jsonSha = data.content.sha;
+        pendingImages = {};
+        showStatus('Pubblicato con successo! Il sito si aggiorna in ~30 secondi.', 'success');
+      })
+      .catch(function(err) {
+        showStatus('Errore: ' + err.message, 'error');
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Pubblica modifiche';
+      });
+  }
+
+  // ── Login ──
+  document.getElementById('loginBtn').addEventListener('click', function() {
+    var pwd = document.getElementById('adminPwd').value;
+    var tk = document.getElementById('ghToken').value.trim();
+    var errEl = document.getElementById('loginError');
+
+    if (pwd !== CONFIG.password) {
+      errEl.textContent = 'Password errata.';
+      errEl.className = 'status error show';
+      return;
+    }
+    if (!tk || !tk.startsWith('ghp_')) {
+      errEl.textContent = 'Inserisci un GitHub Token valido (inizia con ghp_).';
+      errEl.className = 'status error show';
+      return;
+    }
+
+    token = tk;
+    errEl.className = 'status error';
+
+    // Test token
+    ghApi('data/portfolio.json')
+      .then(function(res) {
+        if (res.status === 401 || res.status === 403) {
+          errEl.textContent = 'Token non valido o senza permessi. Assicurati di avere il permesso "repo".';
+          errEl.className = 'status error show';
+          return;
+        }
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        sessionStorage.setItem('ghToken', tk);
+        loadPortfolio();
+      })
+      .catch(function() {
+        errEl.textContent = 'Errore di connessione. Controlla la rete.';
+        errEl.className = 'status error show';
+      });
+  });
+
+  // Password enter key
+  document.getElementById('adminPwd').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('ghToken').focus();
+  });
+  document.getElementById('ghToken').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('loginBtn').click();
+  });
+
+  // ── Add project ──
+  document.getElementById('addBtn').addEventListener('click', function() {
+    portfolio.push({
+      title: 'Nuovo progetto',
+      category: 'Categoria',
+      description: 'Descrizione del progetto...',
+      image: '',
+      gradient: 'concert'
+    });
+    renderItems();
+    // Scroll to new item
+    var list = document.getElementById('projectsList');
+    list.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ── Publish & Reload ──
+  document.getElementById('publishBtn').addEventListener('click', publish);
+  document.getElementById('reloadBtn').addEventListener('click', loadPortfolio);
+
+  // ── Auto-login if token in session ──
+  var savedToken = sessionStorage.getItem('ghToken');
+  if (savedToken) {
+    document.getElementById('ghToken').value = savedToken;
+  }
+})();
+</script>
+</body>
+</html>
