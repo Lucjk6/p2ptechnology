@@ -137,7 +137,7 @@
     owner: 'Lucjk6',
     repo: 'p2ptechnology',
     branch: 'main',
-    root: 'p2p-technology',
+    root: '',
     password: 'p2p2026'
   };
 
@@ -181,7 +181,9 @@
       opts.headers['Content-Type'] = 'application/json';
       opts.body = JSON.stringify(body);
     }
-    return fetch('https://api.github.com/repos/' + CONFIG.owner + '/' + CONFIG.repo + '/contents/' + CONFIG.root + '/' + path + '?ref=' + CONFIG.branch, opts);
+    var base = 'https://api.github.com/repos/' + CONFIG.owner + '/' + CONFIG.repo + '/contents/';
+    var fullPath = CONFIG.root ? CONFIG.root + '/' + path : path;
+    return fetch(base + fullPath + '?ref=' + CONFIG.branch, opts);
   }
 
   // ── Image resize ──
