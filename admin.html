@@ -193,8 +193,10 @@
       reader.onload = function(e) {
         var img = new Image();
         img.onload = function() {
+          var minW = 1200, minH = 675;
           var maxW = 1920, maxH = 1080;
           var w = img.width, h = img.height;
+          var tooSmall = (w < minW || h < minH);
           if (w > maxW) { h = h * maxW / w; w = maxW; }
           if (h > maxH) { w = w * maxH / h; h = maxH; }
           var canvas = document.createElement('canvas');
@@ -202,7 +204,7 @@
           canvas.height = Math.round(h);
           canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
           var base64 = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
-          resolve(base64);
+          resolve({ base64: base64, tooSmall: tooSmall, width: img.width, height: img.height });
         };
         img.src = e.target.result;
       };
@@ -295,15 +297,18 @@
       input.addEventListener('change', function() {
         if (!input.files.length) return;
         var idx = parseInt(area.getAttribute('data-index'));
-        resizeImage(input.files[0]).then(function(base64) {
-          pendingImages[idx] = base64;
+        resizeImage(input.files[0]).then(function(result) {
+          if (result.tooSmall) {
+            showStatus('Attenzione: immagine troppo piccola (' + result.width + 'x' + result.height + 'px). Usa foto di almeno 1200x675px per evitare sgranature.', 'error');
+          }
+          pendingImages[idx] = result.base64;
           var img = area.querySelector('img');
           if (!img) {
             img = document.createElement('img');
             img.alt = 'Preview';
             area.appendChild(img);
           }
-          img.src = 'data:image/jpeg;base64,' + base64;
+          img.src = 'data:image/jpeg;base64,' + result.base64;
           area.querySelector('.upload-hint').style.display = 'none';
         });
       });
