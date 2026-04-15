@@ -290,4 +290,106 @@
   }
 
   loadPortfolio();
+
+  // ── Dynamic showcase loading ──
+  var SHOWCASE_GRADIENTS = [
+    'linear-gradient(135deg, #0a0a0a 0%, #1a1200 50%, #0a0a0a 100%)',
+    'linear-gradient(135deg, #0a0a0a 0%, #0d0a1a 50%, #0a0a0a 100%)',
+    'linear-gradient(135deg, #0a0a0a 0%, #001a1a 50%, #0a0a0a 100%)',
+    'linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%)',
+    'linear-gradient(135deg, #0a0a0a 0%, #0a1a0d 50%, #0a0a0a 100%)',
+    'linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%)'
+  ];
+  var FALLBACK_SHOWCASE = [
+    { title: 'Concerto Estate 2024', image: '' },
+    { title: 'Fashion Show', image: '' },
+    { title: 'LED Wall Corporate', image: '' },
+    { title: 'Expo Stand', image: '' },
+    { title: 'Festival Elettronica', image: '' },
+    { title: 'Gala Dinner', image: '' }
+  ];
+
+  function buildShowcaseCard(item, index) {
+    var card = document.createElement('div');
+    card.className = 'showcase-card';
+    if (item.image) {
+      card.style.backgroundImage = 'url(' + item.image + ')';
+      card.style.backgroundSize = 'cover';
+      card.style.backgroundPosition = 'center';
+    } else {
+      card.style.background = SHOWCASE_GRADIENTS[index % SHOWCASE_GRADIENTS.length];
+    }
+    var span = document.createElement('span');
+    span.textContent = item.title;
+    card.appendChild(span);
+    return card;
+  }
+
+  function renderShowcase(items) {
+    var container = document.getElementById('heroShowcase');
+    if (!container) return;
+    container.innerHTML = '';
+
+    // Column 1 — scrolls up
+    var col1 = document.createElement('div');
+    col1.className = 'showcase-col showcase-up';
+    var track1 = document.createElement('div');
+    track1.className = 'showcase-track';
+
+    // Column 2 — scrolls down (reversed order)
+    var col2 = document.createElement('div');
+    col2.className = 'showcase-col showcase-down';
+    var track2 = document.createElement('div');
+    track2.className = 'showcase-track';
+
+    var reversed = items.slice().reverse();
+
+    // Original + duplicate for seamless loop
+    for (var pass = 0; pass < 2; pass++) {
+      items.forEach(function (item, i) {
+        track1.appendChild(buildShowcaseCard(item, i));
+      });
+      reversed.forEach(function (item, i) {
+        track2.appendChild(buildShowcaseCard(item, i));
+      });
+    }
+
+    col1.appendChild(track1);
+    col2.appendChild(track2);
+    container.appendChild(col1);
+    container.appendChild(col2);
+  }
+
+  function loadShowcase() {
+    fetch('data/showcase.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .then(function (items) {
+        renderShowcase(items);
+      })
+      .catch(function () {
+        renderShowcase(FALLBACK_SHOWCASE);
+      });
+  }
+
+  loadShowcase();
+
+  // ── Mobile tap toggle for portfolio overlay ──
+  var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (isTouchDevice) {
+    document.addEventListener('click', function (e) {
+      var item = e.target.closest('.portfolio-item');
+      if (item) {
+        e.preventDefault();
+        // Close any other open overlays
+        document.querySelectorAll('.portfolio-item.active').forEach(function (el) {
+          if (el !== item) el.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      }
+    });
+  }
+
 })();
