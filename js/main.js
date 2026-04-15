@@ -377,19 +377,29 @@
   loadShowcase();
 
   // ── Mobile tap toggle for portfolio overlay ──
-  var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-  if (isTouchDevice) {
-    document.addEventListener('click', function (e) {
+  (function () {
+    var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if (!isTouchDevice) return;
+
+    document.addEventListener('touchstart', function (e) {
       var item = e.target.closest('.portfolio-item');
-      if (item) {
-        e.preventDefault();
-        // Close any other open overlays
+      if (!item) {
+        // Tapped outside any portfolio item — close all
         document.querySelectorAll('.portfolio-item.active').forEach(function (el) {
-          if (el !== item) el.classList.remove('active');
+          el.classList.remove('active');
         });
-        item.classList.toggle('active');
+        return;
       }
-    });
-  }
+
+      // Toggle the tapped item
+      var wasActive = item.classList.contains('active');
+      document.querySelectorAll('.portfolio-item.active').forEach(function (el) {
+        el.classList.remove('active');
+      });
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    }, { passive: true });
+  })();
 
 })();
