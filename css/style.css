@@ -587,9 +587,11 @@ section {
   display: block;
   transition: transform 0.4s, opacity 0.4s;
 }
-.portfolio-item:hover .portfolio-img {
-  transform: scale(1.05);
-  opacity: 0.6;
+@media (hover: hover) {
+  .portfolio-item:hover .portfolio-img {
+    transform: scale(1.05);
+    opacity: 0.6;
+  }
 }
 
 .portfolio-placeholder {
@@ -638,7 +640,9 @@ section {
   pointer-events: none;
   transition: opacity 0.3s;
 }
-.portfolio-item:hover .portfolio-overlay { opacity: 1; pointer-events: auto; }
+@media (hover: hover) {
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; pointer-events: auto; }
+}
 .portfolio-item.active .portfolio-overlay { opacity: 1; pointer-events: auto; }
 .portfolio-item.active .portfolio-img { transform: scale(1.05); opacity: 0.6; }
 
