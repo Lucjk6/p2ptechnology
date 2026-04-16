@@ -671,19 +671,19 @@ section {
 
 .portfolio-caption {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 28px;
-  text-align: center;
+  padding: 32px 24px;
+  text-align: left;
   background: #0a0a0a;
   border: 1px solid #1e1e1e;
-  aspect-ratio: 16/9;
 }
 .portfolio-caption p {
-  font-size: 14px;
-  color: #888;
-  line-height: 1.8;
-  letter-spacing: 0.3px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #999;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
 }
 
 /* ── CONTACT ── */
