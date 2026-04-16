@@ -23,6 +23,16 @@
       navToggle.setAttribute('aria-expanded', 'false');
     });
 
+    // Close button inside nav panel
+    var navClose = document.querySelector('.nav-close');
+    if (navClose) {
+      navClose.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        navOverlay.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+
     // Close menu on link click (mobile)
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
