@@ -88,7 +88,7 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  min-height: 92vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,15 +103,15 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  min-height: 92vh;
-  padding: 80px 48px;
+  min-height: 80vh;
+  padding: 40px 48px;
   gap: 40px;
 }
 
 .hero-text {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   min-height: 100%;
 }
 
