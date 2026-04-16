@@ -74,6 +74,9 @@ nav {
   cursor: pointer;
   padding: 8px;
 }
+.nav-close {
+  display: none;
+}
 .nav-toggle span {
   display: block;
   width: 24px;
@@ -575,6 +578,7 @@ section {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  aspect-ratio: 16/9;
 }
 .portfolio-item:first-child {
   grid-column: span 2;
@@ -582,7 +586,7 @@ section {
 
 .portfolio-img {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.4s, opacity 0.4s;
