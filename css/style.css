@@ -670,12 +670,17 @@ section {
 }
 
 .portfolio-caption {
-  max-width: 700px;
-  margin: 32px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
   text-align: center;
+  background: #0a0a0a;
+  border: 1px solid #1e1e1e;
+  aspect-ratio: 16/9;
 }
 .portfolio-caption p {
-  font-size: 15px;
+  font-size: 14px;
   color: #888;
   line-height: 1.8;
   letter-spacing: 0.3px;

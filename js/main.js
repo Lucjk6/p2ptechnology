@@ -271,6 +271,12 @@
       grid.appendChild(item);
     });
 
+    // Add description cell at the end
+    var caption = document.createElement('div');
+    caption.className = 'portfolio-caption fade-in';
+    caption.innerHTML = '<p>Ogni progetto è un lavoro su misura: dalla progettazione dell\'impianto elettrico alla scenografia luminosa, curiamo ogni dettaglio tecnico per trasformare spazi ordinari in esperienze straordinarie.</p>';
+    grid.appendChild(caption);
+
     // Observe new elements for fade-in
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function (entries) {
