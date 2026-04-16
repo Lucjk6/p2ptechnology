@@ -671,19 +671,24 @@ section {
 
 .portfolio-caption {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 32px 24px;
-  text-align: left;
-  background: #0a0a0a;
+  padding: 32px 28px;
+  background: linear-gradient(135deg, #0e0e0e 0%, #111 100%);
   border: 1px solid #1e1e1e;
 }
 .portfolio-caption p {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  color: #999;
-  line-height: 1.4;
-  letter-spacing: 1.5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #aaa;
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+}
+.portfolio-caption p strong {
+  color: #F5C400;
+  font-weight: 500;
 }
 
 /* ── CONTACT ── */

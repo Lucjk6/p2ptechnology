@@ -274,7 +274,7 @@
     // Add description cell at the end
     var caption = document.createElement('div');
     caption.className = 'portfolio-caption fade-in';
-    caption.innerHTML = '<p>Ogni progetto è un lavoro su misura: dalla progettazione dell\'impianto elettrico alla scenografia luminosa, curiamo ogni dettaglio tecnico per trasformare spazi ordinari in esperienze straordinarie.</p>';
+    caption.innerHTML = '<p>Ogni progetto è un <strong>lavoro su misura</strong>: dalla progettazione dell\'impianto elettrico alla <strong>scenografia luminosa</strong>, curiamo ogni dettaglio tecnico per trasformare spazi ordinari in <strong>esperienze straordinarie</strong>.</p>';
     grid.appendChild(caption);
 
     // Observe new elements for fade-in
