@@ -669,6 +669,18 @@ section {
   margin-top: 8px;
 }
 
+.portfolio-col3 {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.portfolio-col3 .portfolio-item {
+  flex-shrink: 0;
+}
+.portfolio-col3 .portfolio-caption {
+  flex: 1;
+}
+
 .portfolio-caption {
   display: flex;
   flex-direction: column;

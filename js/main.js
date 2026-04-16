@@ -277,6 +277,19 @@
     caption.innerHTML = '<p>Ogni progetto è un <strong>lavoro su misura</strong>: dalla progettazione dell\'impianto elettrico alla <strong>scenografia luminosa</strong>, curiamo ogni dettaglio tecnico per trasformare spazi ordinari in <strong>esperienze straordinarie</strong>.</p>';
     grid.appendChild(caption);
 
+    // Group column-3 items (2nd photo + caption) into a flex wrapper
+    if (grid.children.length > 2) {
+      var secondItem = grid.children[1];
+      var captionEl = grid.querySelector('.portfolio-caption');
+      if (secondItem && captionEl) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'portfolio-col3';
+        grid.insertBefore(wrapper, secondItem);
+        wrapper.appendChild(secondItem);
+        wrapper.appendChild(captionEl);
+      }
+    }
+
     // Observe new elements for fade-in
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function (entries) {
