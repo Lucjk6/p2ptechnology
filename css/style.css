@@ -692,7 +692,7 @@ section {
 }
 .portfolio-caption p {
   font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 300;
   color: #aaa;
   line-height: 1.9;
@@ -926,6 +926,7 @@ footer {
   .service-flip { min-height: 250px; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-item:first-child { grid-column: span 1; }
+  .portfolio-caption p { font-size: 15px; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
 
   .hero-cta { flex-direction: column; align-items: flex-start; }
