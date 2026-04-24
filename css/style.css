@@ -36,6 +36,7 @@ nav {
   color: #f0f0f0;
 }
 .logo span { color: #F5C400; }
+.logo small { font-size: 10px; color: #666; letter-spacing: 2px; font-weight: 400; vertical-align: middle; margin-left: 4px; }
 
 .nav-links {
   display: flex;
