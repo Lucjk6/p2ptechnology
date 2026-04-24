@@ -142,49 +142,6 @@
     });
   }
 
-  // ── Animated counters ──
-  var statNums = document.querySelectorAll('.stat-num[data-target]');
-  if (statNums.length && 'IntersectionObserver' in window) {
-    var counterDone = false;
-    var counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !counterDone) {
-          counterDone = true;
-          statNums.forEach(function (el) {
-            var target = parseInt(el.getAttribute('data-target'), 10);
-            var suffix = el.getAttribute('data-suffix') || '';
-            if (target === 0) {
-              el.textContent = '0' + suffix;
-              return;
-            }
-            var duration = 1800;
-            var start = 0;
-            var startTime = null;
-
-            function step(timestamp) {
-              if (!startTime) startTime = timestamp;
-              var progress = Math.min((timestamp - startTime) / duration, 1);
-              var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-              var current = Math.floor(eased * target);
-              el.textContent = current + suffix;
-              if (progress < 1) {
-                requestAnimationFrame(step);
-              } else {
-                el.textContent = target + suffix;
-              }
-            }
-            requestAnimationFrame(step);
-          });
-          counterObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-
-    statNums.forEach(function (el) {
-      counterObserver.observe(el);
-    });
-  }
-
   // ── Cookie banner ──
   var cookieBanner = document.getElementById('cookieBanner');
   var cookieAccept = document.getElementById('cookieAccept');

@@ -250,17 +250,12 @@ section {
 
 /* alternate section backgrounds */
 #chi-siamo { background: #0e0e0e; }
-#missione { background: #0a0a0a; text-align: center; }
-#settori { background: #0e0e0e; }
 #servizi { background: #0a0a0a; position: relative; }
 #scenotecnica { background: #0e0e0e; }
 #mediaserver { background: #0a0a0a; }
 #sicurezza { background: #0e0e0e; }
-#team { background: #0a0a0a; }
-#vantaggi { background: #0e0e0e; }
-#processo { background: #0a0a0a; }
-#progetti { background: #0e0e0e; }
-#contatti { background: #0a0a0a; }
+#progetti { background: #0a0a0a; }
+#contatti { background: #0e0e0e; }
 
 /* ── FADE-IN ON SCROLL ── */
 .fade-in {
@@ -342,52 +337,33 @@ section {
 .team-member strong { display: block; color: #f0f0f0; font-size: 15px; }
 .team-member span { font-size: 13px; color: #888; }
 
-/* ── MISSION ── */
-.mission-content { max-width: 800px; margin: 0 auto; }
-.mission-content .section-title em {
-  font-style: normal;
-  background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── ABOUT extras ── */
+.about-mission {
+  font-size: 16px;
+  color: #999;
+  line-height: 1.8;
+  margin-top: 20px;
+  max-width: 480px;
 }
-.mission-text {
-  font-size: 17px;
-  color: #888;
-  line-height: 1.9;
-  max-width: 700px;
-  margin: 0 auto;
+.about-mission strong { color: #F5C400; }
+.about-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
 }
-
-/* ── SECTORS ── */
-.sectors-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-top: 48px;
-}
-.sector-card {
+.about-sectors span {
+  padding: 6px 14px;
   background: #111;
   border: 1px solid #222;
-  border-top: 2px solid var(--accent, #F5C400);
-  padding: 28px 20px;
-  transition: border-color 0.3s, transform 0.3s;
-}
-.sector-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-.sector-card svg {
-  width: 32px;
-  height: 32px;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-.sector-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
+  border-radius: 20px;
+  font-size: 12px;
   letter-spacing: 1px;
-  color: var(--accent);
-  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #aaa;
+  transition: border-color 0.3s, color 0.3s;
 }
-.sector-card p { font-size: 13px; color: #999; line-height: 1.7; }
+.about-sectors span:hover { border-color: #F5C400; color: #F5C400; }
 
 /* ── SERVICES (steps) ── */
 .services-steps {
@@ -580,118 +556,6 @@ section {
   margin-bottom: 8px;
 }
 .security-card p { font-size: 13px; color: #999; line-height: 1.7; }
-
-/* ── TEAM (full cards) ── */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 48px;
-}
-.team-full-card {
-  background: #111;
-  border: 1px solid #222;
-  border-top: 2px solid var(--accent, #F5C400);
-  padding: 28px 24px;
-  transition: border-color 0.3s;
-}
-.team-full-card:hover { border-color: var(--accent); }
-.team-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #0a0a0a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-}
-.team-full-card h4 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  color: #f0f0f0;
-  letter-spacing: 1px;
-}
-.team-role {
-  font-size: 13px;
-  color: var(--accent);
-  display: block;
-  margin-bottom: 12px;
-}
-.team-full-card p { font-size: 13px; color: #888; line-height: 1.7; }
-
-/* ── ADVANTAGES ── */
-.advantages-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 48px;
-}
-.adv-card {
-  background: #111;
-  border: 1px solid #222;
-  padding: 28px 24px;
-  transition: border-color 0.3s;
-}
-.adv-card:hover { border-color: #444; }
-.adv-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  color: #ff4444;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.adv-card h4 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  color: #f0f0f0;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-.adv-card p { font-size: 13px; color: #888; line-height: 1.7; }
-
-/* ── PROCESS ── */
-.process-grid {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  margin-top: 48px;
-  justify-content: center;
-}
-.process-step {
-  text-align: center;
-  flex: 1;
-  max-width: 200px;
-}
-.process-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px;
-  background: linear-gradient(135deg, #00d4aa, #0088ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-.process-step h4 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  color: #f0f0f0;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-.process-step p { font-size: 12px; color: #888; line-height: 1.7; }
-.process-arrow {
-  color: #444;
-  font-size: 24px;
-  padding-top: 12px;
-  flex-shrink: 0;
-  margin: 0 8px;
-}
 
 /* ── CONTACT SOCIAL ── */
 .contact-social {
@@ -1076,16 +940,10 @@ footer {
   footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
   .services-steps { grid-template-columns: 1fr; gap: 40px; }
   .sceno-grid { grid-template-columns: 1fr; gap: 40px; }
   .media-grid { grid-template-columns: 1fr; gap: 40px; }
   .security-grid { grid-template-columns: 1fr; gap: 40px; }
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .advantages-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-grid { flex-wrap: wrap; justify-content: center; }
-  .process-arrow { display: none; }
-  .process-step { min-width: 140px; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-item:first-child { grid-column: span 1; }
   .portfolio-caption p { font-size: 15px; }
@@ -1098,11 +956,6 @@ footer {
 
 @media (max-width: 600px) {
   .hero h1 { font-size: clamp(40px, 12vw, 64px); }
-  .about-stat-big .stat-num { font-size: 52px; }
-  .sectors-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
-  .advantages-grid { grid-template-columns: 1fr; }
   .media-tools { grid-template-columns: 1fr; }
   .security-services { grid-template-columns: 1fr; }
-  .process-step { min-width: 100%; }
 }
