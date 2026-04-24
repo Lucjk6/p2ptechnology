@@ -364,12 +364,20 @@
       }
     }
 
+    var lastWidth = 0;
     window.addEventListener('resize', function () {
-      resize();
-      createParticles();
+      var hero = canvas.parentElement;
+      var newWidth = hero.offsetWidth;
+      // Only recreate on actual width change (ignore mobile address bar toggle)
+      if (newWidth !== lastWidth) {
+        lastWidth = newWidth;
+        resize();
+        createParticles();
+      }
     });
 
     resize();
+    lastWidth = canvas.width;
     createParticles();
     draw();
   })();
