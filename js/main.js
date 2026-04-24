@@ -347,18 +347,21 @@
       animId = requestAnimationFrame(draw);
     }
 
-    // Track mouse for interactive repulsion
-    var heroEl = canvas.closest('.hero');
-    if (heroEl) {
-      heroEl.addEventListener('mousemove', function (e) {
-        var rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-      });
-      heroEl.addEventListener('mouseleave', function () {
-        mouse.x = -9999;
-        mouse.y = -9999;
-      });
+    // Track mouse for interactive repulsion (desktop only)
+    var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if (!isTouchDevice) {
+      var heroEl = canvas.closest('.hero');
+      if (heroEl) {
+        heroEl.addEventListener('mousemove', function (e) {
+          var rect = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+        });
+        heroEl.addEventListener('mouseleave', function () {
+          mouse.x = -9999;
+          mouse.y = -9999;
+        });
+      }
     }
 
     window.addEventListener('resize', function () {

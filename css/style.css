@@ -336,6 +336,7 @@ section {
 .team-bar { width: 4px; height: 40px; border-radius: 2px; flex-shrink: 0; }
 .team-member strong { display: block; color: #f0f0f0; font-size: 15px; }
 .team-member span { font-size: 13px; color: #888; }
+.team-bio { font-size: 13px; color: #666; line-height: 1.6; margin-top: 8px; }
 
 /* ── ABOUT extras ── */
 .about-mission {
