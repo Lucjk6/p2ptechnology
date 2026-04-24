@@ -307,90 +307,112 @@
 
   loadPortfolio();
 
-  // ── Dynamic showcase loading ──
-  var SHOWCASE_GRADIENTS = [
-    'linear-gradient(135deg, #0a0a0a 0%, #1a1200 50%, #0a0a0a 100%)',
-    'linear-gradient(135deg, #0a0a0a 0%, #0d0a1a 50%, #0a0a0a 100%)',
-    'linear-gradient(135deg, #0a0a0a 0%, #001a1a 50%, #0a0a0a 100%)',
-    'linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%)',
-    'linear-gradient(135deg, #0a0a0a 0%, #0a1a0d 50%, #0a0a0a 100%)',
-    'linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%)'
-  ];
-  var FALLBACK_SHOWCASE = [
-    { title: 'Concerto Estate 2024', image: '' },
-    { title: 'Fashion Show', image: '' },
-    { title: 'LED Wall Corporate', image: '' },
-    { title: 'Expo Stand', image: '' },
-    { title: 'Festival Elettronica', image: '' },
-    { title: 'Gala Dinner', image: '' }
-  ];
+  // ── Hero particle network animation ──
+  (function () {
+    var canvas = document.getElementById('heroParticles');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var PARTICLE_COUNT = 80;
+    var CONNECT_DIST = 140;
+    var mouse = { x: -9999, y: -9999 };
+    var animId;
 
-  function buildShowcaseCard(item, index) {
-    var card = document.createElement('div');
-    card.className = 'showcase-card';
-    if (item.image) {
-      card.style.backgroundImage = 'url(' + item.image + ')';
-      card.style.backgroundSize = 'cover';
-      card.style.backgroundPosition = 'center';
-    } else {
-      card.style.background = SHOWCASE_GRADIENTS[index % SHOWCASE_GRADIENTS.length];
-    }
-    var span = document.createElement('span');
-    span.textContent = item.title;
-    card.appendChild(span);
-    return card;
-  }
-
-  function renderShowcase(items) {
-    var container = document.getElementById('heroShowcase');
-    if (!container) return;
-    container.innerHTML = '';
-
-    // Column 1 — scrolls up
-    var col1 = document.createElement('div');
-    col1.className = 'showcase-col showcase-up';
-    var track1 = document.createElement('div');
-    track1.className = 'showcase-track';
-
-    // Column 2 — scrolls down (reversed order)
-    var col2 = document.createElement('div');
-    col2.className = 'showcase-col showcase-down';
-    var track2 = document.createElement('div');
-    track2.className = 'showcase-track';
-
-    var reversed = items.slice().reverse();
-
-    // Original + duplicate for seamless loop
-    for (var pass = 0; pass < 2; pass++) {
-      items.forEach(function (item, i) {
-        track1.appendChild(buildShowcaseCard(item, i));
-      });
-      reversed.forEach(function (item, i) {
-        track2.appendChild(buildShowcaseCard(item, i));
-      });
+    function resize() {
+      var hero = canvas.parentElement;
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
     }
 
-    col1.appendChild(track1);
-    col2.appendChild(track2);
-    container.appendChild(col1);
-    container.appendChild(col2);
-  }
+    function createParticles() {
+      particles = [];
+      for (var i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          r: Math.random() * 2 + 1,
+          alpha: Math.random() * 0.5 + 0.3
+        });
+      }
+    }
 
-  function loadShowcase() {
-    fetch('data/showcase.json')
-      .then(function (res) {
-        if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then(function (items) {
-        renderShowcase(items);
-      })
-      .catch(function () {
-        renderShowcase(FALLBACK_SHOWCASE);
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw connections
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECT_DIST) {
+            var opacity = (1 - dist / CONNECT_DIST) * 0.15;
+            ctx.strokeStyle = 'rgba(245,196,0,' + opacity + ')';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw & move particles
+      for (var k = 0; k < particles.length; k++) {
+        var p = particles[k];
+
+        // Mouse repulsion
+        var mdx = p.x - mouse.x;
+        var mdy = p.y - mouse.y;
+        var mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mDist < 120) {
+          p.x += mdx * 0.02;
+          p.y += mdy * 0.02;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap edges
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(245,196,0,' + p.alpha + ')';
+        ctx.fill();
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    // Track mouse for interactive repulsion
+    var heroEl = canvas.closest('.hero');
+    if (heroEl) {
+      heroEl.addEventListener('mousemove', function (e) {
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
       });
-  }
+      heroEl.addEventListener('mouseleave', function () {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
+    }
 
-  loadShowcase();
+    window.addEventListener('resize', function () {
+      resize();
+      createParticles();
+    });
+
+    resize();
+    createParticles();
+    draw();
+  })();
 
   // ── Mobile tap toggle for portfolio overlay ──
   (function () {

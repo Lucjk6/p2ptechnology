@@ -100,19 +100,19 @@ nav {
 
 .hero-content {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  z-index: 1;
+  display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 80vh;
   padding: 40px 48px;
-  gap: 40px;
 }
 
 .hero-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100%;
+  max-width: 700px;
 }
 
 .hero-bg {
@@ -187,74 +187,15 @@ nav {
   gap: 16px;
 }
 
-/* ── HERO SHOWCASE (scrolling cards) ── */
-.hero-showcase {
-  display: flex;
-  gap: 12px;
-  height: 92vh;
-  overflow: hidden;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-}
-
-.showcase-col {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-
-.showcase-track {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.showcase-up .showcase-track {
-  animation: scrollUp 25s linear infinite;
-}
-
-.showcase-down .showcase-track {
-  animation: scrollDown 25s linear infinite;
-}
-
-@keyframes scrollUp {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); }
-}
-
-@keyframes scrollDown {
-  0% { transform: translateY(-50%); }
-  100% { transform: translateY(0); }
-}
-
-.showcase-card {
+/* ── HERO PARTICLES CANVAS ── */
+.hero-particles {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 4/3;
-  border: 1px solid #1e1e1e;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 16px;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
-
-.showcase-card span {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  position: relative;
-  z-index: 1;
-}
-
-.sc-concert  { background: linear-gradient(135deg, #1a1200 0%, #0a0a0a 60%, #1a1500 100%); }
-.sc-fashion  { background: linear-gradient(135deg, #0d0a1a 0%, #0a0a0a 60%, #150a1a 100%); }
-.sc-led      { background: linear-gradient(135deg, #001a1a 0%, #0a0a0a 60%, #001a15 100%); }
-.sc-expo     { background: linear-gradient(135deg, #1a0a0a 0%, #0a0a0a 60%, #1a0f0a 100%); }
-.sc-festival { background: linear-gradient(135deg, #0a0a1a 0%, #0a0a0a 60%, #0a101a 100%); }
-.sc-gala     { background: linear-gradient(135deg, #1a1a0a 0%, #0a0a0a 60%, #15150a 100%); }
 
 /* ── BUTTONS ── */
 .btn-primary {
@@ -1128,11 +1069,10 @@ footer {
   section { padding: 60px 24px; }
   .hero { padding: 0; min-height: auto; }
   .hero-content {
-    grid-template-columns: 1fr;
     padding: 30px 24px 40px;
     min-height: auto;
   }
-  .hero-showcase { display: none; }
+  .hero-particles { opacity: 0.6; }
   footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
