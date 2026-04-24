@@ -124,19 +124,6 @@
         });
     });
   }
-  // ── Flip cards on click ──
-  var flipCards = document.querySelectorAll('.flip-card');
-  flipCards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      card.classList.toggle('flipped');
-    });
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        card.classList.toggle('flipped');
-      }
-    });
-  });
 
   // ── Fade-in on scroll (IntersectionObserver) ──
   var fadeEls = document.querySelectorAll('.fade-in');
