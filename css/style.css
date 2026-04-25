@@ -594,6 +594,9 @@ section {
   font-size: 13px;
   letter-spacing: 1px;
   transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 .contact-social a:hover { color: #fff; }
 .contact-item a {
