@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://p2ptechnology.vercel.app/sitemap.xml

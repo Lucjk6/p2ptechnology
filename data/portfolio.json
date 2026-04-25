@@ -1,7 +1,7 @@
 [
   {
     "title": "Cielo Stellato",
-    "category": "Eventi-Feste Private ",
+    "category": "Eventi-Feste Private",
     "description": "Scenografia immersiva, cielo stellato composto di 1km di Catenarie luminose led 4000k",
     "image": "images/portfolio/cielo-stellato-1776283864777.jpg",
     "gradient": "fashion"
@@ -14,17 +14,80 @@
     "gradient": "concert"
   },
   {
-    "title": "LED Wall Corporate",
+    "title": "Concerto Estate 2024",
+    "category": "Evento",
+    "description": "",
+    "image": "images/portfolio/concerto-estate-2024-1776282720184.jpg",
+    "gradient": "concert"
+  },
+  {
+    "title": "Installazione Immersiva",
     "category": "Installazione",
-    "description": "Installazione LED wall ad alta risoluzione per conferenza aziendale con contenuti dinamici e interattivi.",
-    "image": "",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-24-10-05-05.jpg",
     "gradient": "led"
   },
   {
-    "title": "Expo Stand",
-    "category": "Impianto · Fiera",
-    "description": "Progettazione e realizzazione impianto elettrico dedicato per stand fieristico con illuminazione scenografica.",
-    "image": "",
+    "title": "Installazione Immersiva II",
+    "category": "Installazione",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-24-10-05-05 (1).jpg",
+    "gradient": "led"
+  },
+  {
+    "title": "Installazione Immersiva III",
+    "category": "Installazione",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-24-10-05-05 (2).jpg",
+    "gradient": "led"
+  },
+  {
+    "title": "Scultura Luminosa",
+    "category": "Scenotecnica",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-24-10-37-13.jpg",
+    "gradient": "led"
+  },
+  {
+    "title": "Spirale LED",
+    "category": "Installazione",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-24-10-39-32.jpg",
+    "gradient": "fashion"
+  },
+  {
+    "title": "Foresta LED",
+    "category": "Installazione",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-24-10-42-19.jpg",
+    "gradient": "fashion"
+  },
+  {
+    "title": "Cena di Gala",
+    "category": "Evento",
+    "description": "",
+    "image": "images/portfolio/IMG_0006.JPG",
+    "gradient": "concert"
+  },
+  {
+    "title": "Tunnel Luminoso",
+    "category": "Installazione · Outdoor",
+    "description": "",
+    "image": "images/portfolio/IMG_0078.JPG",
+    "gradient": "concert"
+  },
+  {
+    "title": "Lounge Bar",
+    "category": "Evento",
+    "description": "",
+    "image": "images/portfolio/IMG_0129.JPG",
+    "gradient": "fashion"
+  },
+  {
+    "title": "Color Hotel",
+    "category": "Expo · Stand",
+    "description": "",
+    "image": "images/portfolio/PHOTO-2026-04-25-16-32-14.jpg",
     "gradient": "expo"
   }
 ]
