@@ -306,7 +306,7 @@
           var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECT_DIST) {
             var opacity = (1 - dist / CONNECT_DIST) * 0.15;
-            ctx.strokeStyle = 'rgba(245,196,0,' + opacity + ')';
+            ctx.strokeStyle = 'rgba(255,107,53,' + opacity + ')';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -340,7 +340,7 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(245,196,0,' + p.alpha + ')';
+        ctx.fillStyle = 'rgba(255,107,53,' + p.alpha + ')';
         ctx.fill();
       }
 
