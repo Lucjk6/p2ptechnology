@@ -77,8 +77,27 @@
     .gradient-select{width:100%;padding:10px 14px;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#f0f0f0;font-size:14px;font-family:inherit}
     .gradient-select:focus{outline:none;border-color:#FF6B35}
 
+    /* Analytics dashboard */
+    .analytics-section{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:24px}
+    .analytics-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+    .analytics-card{background:#0a0a0a;border:1px solid #1e1e1e;border-radius:10px;padding:20px;text-align:center}
+    .analytics-num{font-size:32px;font-weight:700;color:#FF6B35;font-family:'DM Sans',sans-serif}
+    .analytics-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+    .analytics-refs{margin-bottom:20px}
+    .ref-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .ref-name{width:90px;font-size:12px;color:#ccc;text-transform:capitalize}
+    .ref-bar-bg{flex:1;height:20px;background:#1e1e1e;border-radius:4px;overflow:hidden}
+    .ref-bar{height:100%;border-radius:4px;transition:width 0.5s ease}
+    .ref-count{width:60px;text-align:right;font-size:12px;color:#888}
+    .ref-pct{width:40px;text-align:right;font-size:11px;color:#666}
+    .daily-row{display:flex;align-items:flex-end;gap:4px;height:80px}
+    .daily-bar{flex:1;border-radius:3px 3px 0 0;background:#FF6B35;min-height:2px;transition:height 0.5s ease;position:relative}
+    .daily-bar:hover{opacity:0.8}
+    .daily-labels{display:flex;gap:4px;margin-top:4px}
+    .daily-labels span{flex:1;text-align:center;font-size:9px;color:#666}
 
     @media(max-width:768px){
+      .analytics-cards{grid-template-columns:1fr}
       .project-card{grid-template-columns:1fr;gap:12px}
       .img-area{width:100%}
       .card-actions{flex-direction:row;justify-content:space-between;width:100%}
@@ -119,6 +138,33 @@
   </div>
 
   <div id="statusBar" class="status"></div>
+
+  <!-- ANALYTICS DASHBOARD -->
+  <div class="analytics-section" id="analyticsSection">
+    <h2 style="font-size:16px;color:#f0f0f0;margin-bottom:16px">📊 Statistiche Visite</h2>
+    <div class="analytics-cards">
+      <div class="analytics-card">
+        <div class="analytics-num" id="statTotal">—</div>
+        <div class="analytics-label">Visite totali</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-num" id="statToday">—</div>
+        <div class="analytics-label">Oggi</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-num" id="statWeek">—</div>
+        <div class="analytics-label">Ultimi 7 giorni</div>
+      </div>
+    </div>
+    <div class="analytics-refs" id="analyticsRefs">
+      <h3 style="font-size:13px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Sorgenti traffico</h3>
+      <div id="refBars"></div>
+    </div>
+    <div class="analytics-chart" id="analyticsChart">
+      <h3 style="font-size:13px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Ultimi 7 giorni</h3>
+      <div id="dailyChart"></div>
+    </div>
+  </div>
 
   <!-- PORTFOLIO -->
   <div id="tab-portfolio">
@@ -213,7 +259,64 @@
       reader.readAsDataURL(file);
     });
   }
+  // ── Load analytics ──
+  var REF_COLORS = {
+    direct: '#FF6B35', instagram: '#E1306C', google: '#4285F4',
+    facebook: '#1877F2', linkedin: '#0A66C2', tiktok: '#00f2ea', other: '#888'
+  };
+  var REF_LABELS = {
+    direct: 'Diretto', instagram: 'Instagram', google: 'Google',
+    facebook: 'Facebook', linkedin: 'LinkedIn', tiktok: 'TikTok', other: 'Altro'
+  };
 
+  function loadAnalytics() {
+    fetch('/api/stats')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        document.getElementById('statTotal').textContent = (data.total || 0).toLocaleString();
+        document.getElementById('statToday').textContent = (data.today || 0).toLocaleString();
+        document.getElementById('statWeek').textContent = (data.week || 0).toLocaleString();
+
+        // Referrer bars
+        var refs = data.referrers || {};
+        var refTotal = Object.keys(refs).reduce(function(s, k) { return s + refs[k]; }, 0) || 1;
+        var maxRef = Math.max.apply(null, Object.values(refs).concat([1]));
+        var barsHtml = '';
+        var sorted = Object.keys(refs).sort(function(a, b) { return refs[b] - refs[a]; });
+        sorted.forEach(function(src) {
+          var val = refs[src];
+          var pct = Math.round(val / refTotal * 100);
+          var barW = Math.round(val / maxRef * 100);
+          barsHtml +=
+            '<div class="ref-row">' +
+              '<span class="ref-name">' + (REF_LABELS[src] || src) + '</span>' +
+              '<div class="ref-bar-bg"><div class="ref-bar" style="width:' + barW + '%;background:' + (REF_COLORS[src] || '#888') + '"></div></div>' +
+              '<span class="ref-count">' + val + '</span>' +
+              '<span class="ref-pct">' + pct + '%</span>' +
+            '</div>';
+        });
+        if (!sorted.length) barsHtml = '<p style="color:#666;font-size:12px">Nessun dato ancora disponibile</p>';
+        document.getElementById('refBars').innerHTML = barsHtml;
+
+        // Daily chart
+        var daily = data.daily || [];
+        var maxDay = Math.max.apply(null, daily.map(function(d) { return d.visits; }).concat([1]));
+        var chartHtml = '<div class="daily-row">';
+        var labelsHtml = '<div class="daily-labels">';
+        daily.forEach(function(d) {
+          var h = Math.max(2, Math.round(d.visits / maxDay * 72));
+          var label = d.date.split('-').slice(1).join('/');
+          chartHtml += '<div class="daily-bar" style="height:' + h + 'px" title="' + label + ': ' + d.visits + ' visite"></div>';
+          labelsHtml += '<span>' + label + '</span>';
+        });
+        chartHtml += '</div>';
+        labelsHtml += '</div>';
+        document.getElementById('dailyChart').innerHTML = chartHtml + labelsHtml;
+      })
+      .catch(function() {
+        document.getElementById('refBars').innerHTML = '<p style="color:#666;font-size:12px">Analytics non attivo. Configura Vercel KV.</p>';
+      });
+  }
   // â”€â”€ Load portfolio from GitHub â”€â”€
   function loadPortfolio() {
     showStatus('Caricamento dati...', 'info');
@@ -467,6 +570,7 @@
         document.getElementById('adminPanel').style.display = 'block';
         localStorage.setItem('ghToken', tk);
         loadPortfolio();
+        loadAnalytics();
       })
       .catch(function() {
         errEl.textContent = 'Errore di connessione. Controlla la rete.';
@@ -538,6 +642,7 @@
         document.getElementById('loginScreen').style.display = 'none';
         document.getElementById('adminPanel').style.display = 'block';
         loadPortfolio();
+        loadAnalytics();
       })
       .catch(function() {});
   }

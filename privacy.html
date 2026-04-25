@@ -154,6 +154,7 @@
 <script>
 (function() {
   'use strict';
+  try { fetch('/api/track', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ referrer: document.referrer || '' }) }).catch(function(){}); } catch(e){}
   var translations = {
     en: {
       'nav.chi': 'About us', 'nav.servizi': 'Services', 'nav.progetti': 'Projects', 'nav.contatti': 'Contact',

@@ -5,6 +5,15 @@
 (function () {
   'use strict';
 
+  // ── Analytics tracking ──
+  try {
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ referrer: document.referrer || '' })
+    }).catch(function () {});
+  } catch (e) {}
+
   // ── Mobile nav toggle ──
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
