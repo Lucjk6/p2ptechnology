@@ -179,6 +179,7 @@
   function renderPortfolio(projects) {
     var track = document.getElementById('sliderTrack');
     var dotsContainer = document.getElementById('sliderDots');
+    var captionEl = document.getElementById('slideCaption');
     var prevBtn = document.getElementById('sliderPrev');
     var nextBtn = document.getElementById('sliderNext');
     if (!track) return;
@@ -192,31 +193,34 @@
       slide.className = 'slider-slide';
 
       var title = escapeHtml(p.title);
-      var cat = escapeHtml(p.category);
-      var desc = escapeHtml(p.description);
       var grad = GRADIENTS[p.gradient] || GRADIENTS.concert;
 
       if (p.image) {
-        slide.innerHTML =
-          '<img src="' + escapeHtml(p.image) + '" alt="' + title + '" loading="lazy">' +
-          '<div class="slide-info"><span>' + cat + '</span><h4>' + title + '</h4><p>' + desc + '</p></div>';
+        slide.innerHTML = '<img src="' + escapeHtml(p.image) + '" alt="' + title + '" loading="lazy">';
       } else {
         slide.innerHTML =
           '<div class="slide-placeholder" style="background:' + grad + '">' +
             '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
             '<span>' + title + '</span>' +
-          '</div>' +
-          '<div class="slide-info"><span>' + cat + '</span><h4>' + title + '</h4><p>' + desc + '</p></div>';
+          '</div>';
       }
       track.appendChild(slide);
 
-      // Create dot
       var dot = document.createElement('button');
       dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
       dot.setAttribute('aria-label', 'Vai alla foto ' + (i + 1));
       dot.addEventListener('click', function () { goTo(i); });
       dotsContainer.appendChild(dot);
     });
+
+    function updateCaption(index) {
+      if (!captionEl) return;
+      var p = projects[index];
+      captionEl.innerHTML =
+        '<span>' + escapeHtml(p.category) + '</span>' +
+        '<h4>' + escapeHtml(p.title) + '</h4>' +
+        '<p>' + escapeHtml(p.description) + '</p>';
+    }
 
     function goTo(index) {
       current = index;
@@ -225,7 +229,11 @@
       dots.forEach(function (d, i) {
         d.classList.toggle('active', i === current);
       });
+      updateCaption(current);
     }
+
+    // Init caption
+    updateCaption(0);
 
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
