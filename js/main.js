@@ -177,74 +177,81 @@
   }
 
   function renderPortfolio(projects) {
-    var grid = document.getElementById('portfolioGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
+    var track = document.getElementById('sliderTrack');
+    var dotsContainer = document.getElementById('sliderDots');
+    var prevBtn = document.getElementById('sliderPrev');
+    var nextBtn = document.getElementById('sliderNext');
+    if (!track) return;
+    track.innerHTML = '';
+    dotsContainer.innerHTML = '';
+
+    var current = 0;
 
     projects.forEach(function (p, i) {
-      var delay = i > 0 ? ' fade-in-delay-' + Math.min(i, 3) : '';
+      var slide = document.createElement('div');
+      slide.className = 'slider-slide';
+
       var title = escapeHtml(p.title);
       var cat = escapeHtml(p.category);
       var desc = escapeHtml(p.description);
       var grad = GRADIENTS[p.gradient] || GRADIENTS.concert;
 
-      var item = document.createElement('div');
-      item.className = 'portfolio-item fade-in' + delay;
-
       if (p.image) {
-        item.innerHTML =
-          '<img src="' + escapeHtml(p.image) + '" alt="' + title + '" class="portfolio-img" loading="lazy">' +
-          '<div class="portfolio-overlay">' +
-            '<span>' + cat + '</span>' +
-            '<h4>' + title + '</h4>' +
-            '<p class="portfolio-desc">' + desc + '</p>' +
-          '</div>';
+        slide.innerHTML =
+          '<img src="' + escapeHtml(p.image) + '" alt="' + title + '" loading="lazy">' +
+          '<div class="slide-info"><span>' + cat + '</span><h4>' + title + '</h4><p>' + desc + '</p></div>';
       } else {
-        item.innerHTML =
-          '<div class="portfolio-placeholder" style="background:' + grad + '">' +
+        slide.innerHTML =
+          '<div class="slide-placeholder" style="background:' + grad + '">' +
             '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
             '<span>' + title + '</span>' +
           '</div>' +
-          '<div class="portfolio-overlay">' +
-            '<span>' + cat + '</span>' +
-            '<h4>' + title + '</h4>' +
-            '<p class="portfolio-desc">' + desc + '</p>' +
-          '</div>';
+          '<div class="slide-info"><span>' + cat + '</span><h4>' + title + '</h4><p>' + desc + '</p></div>';
       }
+      track.appendChild(slide);
 
-      grid.appendChild(item);
+      // Create dot
+      var dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Vai alla foto ' + (i + 1));
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsContainer.appendChild(dot);
     });
 
-    // Add description cell at the end
-    var caption = document.createElement('div');
-    caption.className = 'portfolio-caption fade-in';
-    caption.innerHTML = '<p>Ogni progetto è un <strong>lavoro su misura</strong>: dalla progettazione dell\'impianto elettrico alla <strong>scenografia luminosa</strong>, curiamo ogni dettaglio tecnico per trasformare spazi ordinari in <strong>esperienze straordinarie</strong>.</p>';
-    grid.appendChild(caption);
-
-    // Group column-3 items (2nd photo + caption) into a flex wrapper
-    if (grid.children.length > 2) {
-      var secondItem = grid.children[1];
-      var captionEl = grid.querySelector('.portfolio-caption');
-      if (secondItem && captionEl) {
-        var wrapper = document.createElement('div');
-        wrapper.className = 'portfolio-col3';
-        grid.insertBefore(wrapper, secondItem);
-        wrapper.appendChild(secondItem);
-        wrapper.appendChild(captionEl);
-      }
+    function goTo(index) {
+      current = index;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      var dots = dotsContainer.querySelectorAll('.slider-dot');
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
     }
 
-    // Observe new elements for fade-in
-    if ('IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      grid.querySelectorAll('.fade-in').forEach(function (el) { obs.observe(el); });
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        goTo(current > 0 ? current - 1 : projects.length - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        goTo(current < projects.length - 1 ? current + 1 : 0);
+      });
+    }
+
+    // Touch swipe support
+    var startX = 0;
+    var slider = document.getElementById('portfolioSlider');
+    if (slider) {
+      slider.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      slider.addEventListener('touchend', function (e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) goTo(current < projects.length - 1 ? current + 1 : 0);
+          else goTo(current > 0 ? current - 1 : projects.length - 1);
+        }
+      });
     }
   }
 
@@ -380,32 +387,6 @@
     lastWidth = canvas.width;
     createParticles();
     draw();
-  })();
-
-  // ── Mobile tap toggle for portfolio overlay ──
-  (function () {
-    var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    if (!isTouchDevice) return;
-
-    document.addEventListener('touchstart', function (e) {
-      var item = e.target.closest('.portfolio-item');
-      if (!item) {
-        // Tapped outside any portfolio item — close all
-        document.querySelectorAll('.portfolio-item.active').forEach(function (el) {
-          el.classList.remove('active');
-        });
-        return;
-      }
-
-      // Toggle the tapped item
-      var wasActive = item.classList.contains('active');
-      document.querySelectorAll('.portfolio-item.active').forEach(function (el) {
-        el.classList.remove('active');
-      });
-      if (!wasActive) {
-        item.classList.add('active');
-      }
-    }, { passive: true });
   })();
 
 })();
