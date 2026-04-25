@@ -580,6 +580,7 @@ section {
 }
 .contact-item a:hover { color: #fff; }
 .contact-role { display: block; font-size: 12px; color: #666; margin-top: 2px; margin-bottom: 4px; }
+.contact-bio { font-size: 13px; color: #888; line-height: 1.6; margin: 6px 0 8px; }
 
 /* ── PORTFOLIO ── */
 .portfolio-intro {
