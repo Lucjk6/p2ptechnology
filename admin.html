@@ -266,9 +266,12 @@
           '<input type="file" accept="image/*">' +
         '</div>' +
         '<div class="fields">' +
-          '<div><label>Titolo</label><input type="text" data-field="title" value="' + escapeHtml(item.title) + '"></div>' +
-          '<div><label>Categoria</label><input type="text" data-field="category" value="' + escapeHtml(item.category) + '" placeholder="Es: Evento Â· Milano"></div>' +
-          '<div><label>Descrizione</label><textarea data-field="description">' + escapeHtml(item.description) + '</textarea></div>' +
+          '<div><label>Titolo \uD83C\uDDEE\uD83C\uDDF9</label><input type="text" data-field="title" value="' + escapeHtml(item.title) + '"></div>' +
+          '<div><label>Title \uD83C\uDDEC\uD83C\uDDE7</label><input type="text" data-field="title_en" value="' + escapeHtml(item.title_en || '') + '" placeholder="English title"></div>' +
+          '<div><label>Categoria \uD83C\uDDEE\uD83C\uDDF9</label><input type="text" data-field="category" value="' + escapeHtml(item.category) + '" placeholder="Es: Evento \u00b7 Milano"></div>' +
+          '<div><label>Category \uD83C\uDDEC\uD83C\uDDE7</label><input type="text" data-field="category_en" value="' + escapeHtml(item.category_en || '') + '" placeholder="E.g. Event \u00b7 Milan"></div>' +
+          '<div><label>Descrizione \uD83C\uDDEE\uD83C\uDDF9</label><textarea data-field="description">' + escapeHtml(item.description) + '</textarea></div>' +
+          '<div><label>Description \uD83C\uDDEC\uD83C\uDDE7</label><textarea data-field="description_en">' + escapeHtml(item.description_en || '') + '</textarea></div>' +
           '<div><label>Colore placeholder</label><select class="gradient-select" data-field="gradient">' +
             '<option value="concert"' + (item.gradient === 'concert' ? ' selected' : '') + '>Oro (Concerti)</option>' +
             '<option value="fashion"' + (item.gradient === 'fashion' ? ' selected' : '') + '>Viola (Fashion)</option>' +
@@ -497,8 +500,11 @@
     }
     portfolio.push({
       title: 'Nuovo progetto',
+      title_en: 'New project',
       category: 'Categoria',
+      category_en: 'Category',
       description: 'Descrizione del progetto...',
+      description_en: 'Project description...',
       image: '',
       gradient: 'concert'
     });

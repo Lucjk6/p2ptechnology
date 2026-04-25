@@ -217,10 +217,15 @@
     function updateCaption(index) {
       if (!captionEl) return;
       var p = projects[index];
+      var lang = 'it';
+      try { lang = localStorage.getItem('lang') || 'it'; } catch (e) {}
+      var title = (lang === 'en' && p.title_en) ? p.title_en : p.title;
+      var cat = (lang === 'en' && p.category_en) ? p.category_en : p.category;
+      var desc = (lang === 'en' && p.description_en) ? p.description_en : p.description;
       captionEl.innerHTML =
-        '<span>' + escapeHtml(p.category) + '</span>' +
-        '<h4>' + escapeHtml(p.title) + '</h4>' +
-        '<p>' + escapeHtml(p.description) + '</p>';
+        '<span>' + escapeHtml(cat) + '</span>' +
+        '<h4>' + escapeHtml(title) + '</h4>' +
+        '<p>' + escapeHtml(desc) + '</p>';
     }
 
     function goTo(index) {
@@ -235,6 +240,11 @@
 
     // Init caption
     updateCaption(0);
+
+    // Re-render caption on language change
+    document.addEventListener('langchange', function () {
+      updateCaption(current);
+    });
 
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
@@ -580,6 +590,8 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
     try { localStorage.setItem('lang', lang); } catch (e) {}
+    // Update portfolio slider captions
+    document.dispatchEvent(new CustomEvent('langchange'));
   }
 
   document.querySelectorAll('.lang-btn').forEach(function (btn) {

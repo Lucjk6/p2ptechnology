@@ -1,92 +1,131 @@
 [
   {
     "title": "Cielo Stellato",
+    "title_en": "Starry Sky",
     "category": "Eventi-Feste Private",
+    "category_en": "Events - Private Parties",
     "description": "Scenografia immersiva, cielo stellato composto di 1km di Catenarie luminose led 4000k",
+    "description_en": "Immersive set design, starry sky made of 1km of LED string lights 4000k",
     "image": "images/portfolio/cielo-stellato-1776283864777.jpg",
     "gradient": "fashion"
   },
   {
     "title": "Armani Power Of You",
+    "title_en": "Armani Power Of You",
     "category": "Evento · Milano Fashion Week",
+    "category_en": "Event · Milan Fashion Week",
     "description": "Impianto Scenoluminoso per bancone Dj con led RGBW statico e Lampadario con Led COB Dinamico alta luminosità",
+    "description_en": "Stage lighting system for DJ booth with static RGBW LED and high-brightness dynamic COB LED chandelier",
     "image": "images/portfolio/armani-power-of-you-1776283867070.jpg",
     "gradient": "concert"
   },
   {
     "title": "Concerto Estate 2024",
+    "title_en": "Summer Concert 2024",
     "category": "Evento",
+    "category_en": "Event",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/concerto-estate-2024-1776282720184.jpg",
     "gradient": "concert"
   },
   {
     "title": "Installazione Immersiva",
+    "title_en": "Immersive Installation",
     "category": "Installazione",
+    "category_en": "Installation",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-24-10-05-05.jpg",
     "gradient": "led"
   },
   {
     "title": "Installazione Immersiva II",
+    "title_en": "Immersive Installation II",
     "category": "Installazione",
+    "category_en": "Installation",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-24-10-05-05 (1).jpg",
     "gradient": "led"
   },
   {
     "title": "Installazione Immersiva III",
+    "title_en": "Immersive Installation III",
     "category": "Installazione",
+    "category_en": "Installation",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-24-10-05-05 (2).jpg",
     "gradient": "led"
   },
   {
     "title": "Scultura Luminosa",
+    "title_en": "Light Sculpture",
     "category": "Scenotecnica",
+    "category_en": "Stage Design",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-24-10-37-13.jpg",
     "gradient": "led"
   },
   {
     "title": "Spirale LED",
+    "title_en": "LED Spiral",
     "category": "Installazione",
+    "category_en": "Installation",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-24-10-39-32.jpg",
     "gradient": "fashion"
   },
   {
     "title": "Foresta LED",
+    "title_en": "LED Forest",
     "category": "Installazione",
+    "category_en": "Installation",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-24-10-42-19.jpg",
     "gradient": "fashion"
   },
   {
     "title": "Cena di Gala",
+    "title_en": "Gala Dinner",
     "category": "Evento",
+    "category_en": "Event",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/IMG_0006.JPG",
     "gradient": "concert"
   },
   {
     "title": "Tunnel Luminoso",
+    "title_en": "Light Tunnel",
     "category": "Installazione · Outdoor",
+    "category_en": "Installation · Outdoor",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/IMG_0078.JPG",
     "gradient": "concert"
   },
   {
     "title": "Lounge Bar",
+    "title_en": "Lounge Bar",
     "category": "Evento",
+    "category_en": "Event",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/IMG_0129.JPG",
     "gradient": "fashion"
   },
   {
     "title": "Color Hotel",
+    "title_en": "Color Hotel",
     "category": "Expo · Stand",
+    "category_en": "Expo · Stand",
     "description": "",
+    "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-25-16-32-14.jpg",
     "gradient": "expo"
   }
