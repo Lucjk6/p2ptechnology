@@ -1,3 +1,13 @@
+const Redis = require('ioredis');
+
+let redis;
+function getRedis() {
+  if (!redis) {
+    redis = new Redis(process.env.REDIS_URL, { maxRetriesPerRequest: 1, connectTimeout: 5000 });
+  }
+  return redis;
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -6,22 +16,8 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  var KV_URL = process.env.KV_REST_API_URL;
-  var KV_TOKEN = process.env.KV_REST_API_TOKEN;
-
-  if (!KV_URL || !KV_TOKEN) {
-    return res.status(200).json({ ok: true, note: 'KV not configured' });
-  }
-
-  function kvCmd(args) {
-    return fetch(KV_URL, {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer ' + KV_TOKEN,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(args)
-    }).then(function (r) { return r.json(); });
+  if (!process.env.REDIS_URL) {
+    return res.status(200).json({ ok: true, note: 'Redis not configured' });
   }
 
   var referrer = '';
@@ -41,12 +37,13 @@ module.exports = async (req, res) => {
   var today = new Date().toISOString().split('T')[0];
 
   try {
-    await Promise.all([
-      kvCmd(['INCR', 'visits:total']),
-      kvCmd(['INCR', 'visits:' + today]),
-      kvCmd(['INCR', 'ref:' + source]),
-      kvCmd(['INCR', 'ref:' + source + ':' + today])
-    ]);
+    var r = getRedis();
+    var pipe = r.pipeline();
+    pipe.incr('visits:total');
+    pipe.incr('visits:' + today);
+    pipe.incr('ref:' + source);
+    pipe.incr('ref:' + source + ':' + today);
+    await pipe.exec();
   } catch (e) {}
 
   res.status(200).json({ ok: true });
