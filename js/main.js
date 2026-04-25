@@ -177,6 +177,7 @@
   }
 
   function renderPortfolio(projects) {
+    projects = projects.slice(0, 20); // Max 20 foto
     var track = document.getElementById('sliderTrack');
     var dotsContainer = document.getElementById('sliderDots');
     var captionEl = document.getElementById('slideCaption');

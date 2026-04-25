@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Admin Portfolio — P2P Technology</title>
+  <title>Admin Portfolio â€” P2P Technology</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -18,26 +18,26 @@
     .login-box p{color:#888;font-size:13px;margin-bottom:24px;line-height:1.6}
     .login-box label{display:block;font-size:12px;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:16px}
     .login-box input{width:100%;padding:12px 16px;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#f0f0f0;font-size:14px;font-family:inherit}
-    .login-box input:focus{outline:none;border-color:#F5C400}
+    .login-box input:focus{outline:none;border-color:#FF6B35}
     .login-box .help{font-size:11px;color:#666;margin-top:4px;line-height:1.5}
-    .login-box .help a{color:#F5C400}
+    .login-box .help a{color:#FF6B35}
 
     /* Buttons */
     .btn{padding:12px 24px;border:none;border-radius:8px;font-family:inherit;font-size:14px;cursor:pointer;transition:all 0.3s}
-    .btn-primary{background:#F5C400;color:#0a0a0a;font-weight:500}
-    .btn-primary:hover{background:#ffd633}
+    .btn-primary{background:#FF6B35;color:#0a0a0a;font-weight:500}
+    .btn-primary:hover{background:#ff8855}
     .btn-primary:disabled{opacity:0.5;cursor:not-allowed}
     .btn-danger{background:transparent;border:1px solid #ff4444;color:#ff4444;padding:8px 16px;font-size:12px}
     .btn-danger:hover{background:#ff4444;color:#fff}
     .btn-secondary{background:#1e1e1e;color:#f0f0f0;border:1px solid #333}
-    .btn-secondary:hover{border-color:#F5C400}
+    .btn-secondary:hover{border-color:#FF6B35}
     .btn-full{width:100%;margin-top:24px}
 
     /* Admin panel */
     .admin{display:none;max-width:900px;margin:0 auto;padding:24px}
     .admin-header{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1e1e1e;margin-bottom:24px}
     .admin-header h1{font-size:20px}
-    .admin-header h1 span{color:#F5C400}
+    .admin-header h1 span{color:#FF6B35}
 
     /* Status */
     .status{padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:16px;display:none}
@@ -49,11 +49,11 @@
     /* Project cards */
     .projects{display:flex;flex-direction:column;gap:16px}
     .project-card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;display:grid;grid-template-columns:200px 1fr auto;gap:20px;align-items:start}
-    .project-card.new{border-style:dashed;border-color:#F5C400;opacity:0.8}
+    .project-card.new{border-style:dashed;border-color:#FF6B35;opacity:0.8}
 
     /* Image area */
     .img-area{width:200px;aspect-ratio:16/9;background:#0a0a0a;border:2px dashed #333;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative;transition:border-color 0.3s}
-    .img-area:hover{border-color:#F5C400}
+    .img-area:hover{border-color:#FF6B35}
     .img-area img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
     .img-area .upload-hint{text-align:center;color:#666;font-size:11px;padding:8px}
     .img-area .upload-hint svg{display:block;margin:0 auto 6px}
@@ -63,46 +63,26 @@
     .fields{display:flex;flex-direction:column;gap:12px}
     .fields label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px}
     .fields input,.fields textarea{width:100%;padding:10px 14px;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#f0f0f0;font-size:14px;font-family:inherit;resize:vertical}
-    .fields input:focus,.fields textarea:focus{outline:none;border-color:#F5C400}
+    .fields input:focus,.fields textarea:focus{outline:none;border-color:#FF6B35}
     .fields textarea{min-height:70px}
 
     .card-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
     .card-order{display:flex;gap:4px}
     .card-order button{background:#1e1e1e;border:1px solid #333;color:#999;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
-    .card-order button:hover{border-color:#F5C400;color:#F5C400}
+    .card-order button:hover{border-color:#FF6B35;color:#FF6B35}
 
     .add-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;background:transparent;border:2px dashed #333;border-radius:12px;color:#888;font-size:14px;cursor:pointer;transition:all 0.3s;width:100%;font-family:inherit}
-    .add-btn:hover{border-color:#F5C400;color:#F5C400}
+    .add-btn:hover{border-color:#FF6B35;color:#FF6B35}
 
     .gradient-select{width:100%;padding:10px 14px;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#f0f0f0;font-size:14px;font-family:inherit}
-    .gradient-select:focus{outline:none;border-color:#F5C400}
+    .gradient-select:focus{outline:none;border-color:#FF6B35}
 
-    /* Tabs */
-    .tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid #222}
-    .tab-btn{padding:12px 24px;background:transparent;border:none;border-bottom:2px solid transparent;color:#888;font-size:14px;font-family:inherit;cursor:pointer;transition:all 0.3s}
-    .tab-btn:hover{color:#f0f0f0}
-    .tab-btn.active{color:#F5C400;border-bottom-color:#F5C400}
-    .tab-content{display:none}
-    .tab-content.active{display:block}
-
-    /* Showcase cards */
-    .showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .showcase-card-admin{background:#111;border:1px solid #222;border-radius:10px;overflow:hidden;position:relative}
-    .showcase-card-admin .img-area{width:100%;aspect-ratio:9/14;border:none;border-radius:0}
-    .showcase-card-admin .sc-fields{padding:12px}
-    .showcase-card-admin .sc-fields input{width:100%;padding:8px 10px;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#f0f0f0;font-size:13px;font-family:inherit}
-    .showcase-card-admin .sc-fields input:focus{outline:none;border-color:#F5C400}
-    .showcase-card-admin .sc-fields label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
-    .sc-delete{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.7);border:1px solid #ff4444;color:#ff4444;width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px;z-index:2;display:flex;align-items:center;justify-content:center}
-    .sc-delete:hover{background:#ff4444;color:#fff}
 
     @media(max-width:768px){
       .project-card{grid-template-columns:1fr;gap:12px}
       .img-area{width:100%}
       .card-actions{flex-direction:row;justify-content:space-between;width:100%}
       .admin-header{flex-direction:column;gap:12px;text-align:center}
-      .showcase-grid{grid-template-columns:repeat(2,1fr)}
-      .tabs{overflow-x:auto}
     }
   </style>
 </head>
@@ -111,14 +91,14 @@
 <!-- LOGIN SCREEN -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
-    <h1>P2P <span style="color:#F5C400">Admin</span></h1>
+    <h1>P2P <span style="color:#FF6B35">Admin</span></h1>
     <p>Gestisci il portfolio del sito. Carica foto, modifica descrizioni e pubblica le modifiche.</p>
 
     <label for="ghToken">GitHub Token</label>
     <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx">
     <div class="help">
       Serve per salvare le modifiche. Crea un token su
-      <a href="https://github.com/settings/tokens" target="_blank">GitHub Settings → Tokens</a>
+      <a href="https://github.com/settings/tokens" target="_blank">GitHub Settings â†’ Tokens</a>
       con permesso <strong>repo</strong>.
     </div>
 
@@ -140,28 +120,14 @@
 
   <div id="statusBar" class="status"></div>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="portfolio">Progetti Portfolio</button>
-    <button class="tab-btn" data-tab="showcase">Foto Showcase (Hero)</button>
-  </div>
-
-  <!-- TAB: PORTFOLIO -->
-  <div class="tab-content active" id="tab-portfolio">
+  <!-- PORTFOLIO -->
+  <div id="tab-portfolio">
     <div class="projects" id="projectsList"></div>
     <button class="add-btn" id="addBtn" style="margin-top:16px">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       Aggiungi progetto
     </button>
-  </div>
-
-  <!-- TAB: SHOWCASE -->
-  <div class="tab-content" id="tab-showcase">
-    <p style="color:#888;font-size:13px;margin-bottom:16px">Foto che scorrono accanto a "WE POWER THE STAGE". Usa foto verticali o d'impatto. Serve almeno 1 foto.</p>
-    <div class="showcase-grid" id="showcaseList"></div>
-    <button class="add-btn" id="addShowcaseBtn" style="margin-top:16px">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Aggiungi foto showcase
-    </button>
+    <p id="limitMsg" style="color:#888;font-size:12px;margin-top:8px"></p>
   </div>
 </div>
 
@@ -178,13 +144,11 @@
 
   var token = '';
   var portfolio = [];
-  var showcase = [];
   var pendingImages = {};
-  var pendingShowcaseImages = {};
   var jsonSha = null;
-  var showcaseSha = null;
+  var MAX_PHOTOS = 20;
 
-  // ── Helpers ──
+  // â”€â”€ Helpers â”€â”€
   function utf8ToBase64(str) {
     return btoa(unescape(encodeURIComponent(str)));
   }
@@ -206,7 +170,7 @@
     return d.innerHTML;
   }
 
-  // ── GitHub API ──
+  // â”€â”€ GitHub API â”€â”€
   function ghApi(path, method, body) {
     var opts = {
       method: method || 'GET',
@@ -224,7 +188,7 @@
     return fetch(base + fullPath + '?ref=' + CONFIG.branch, opts);
   }
 
-  // ── Image resize ──
+  // â”€â”€ Image resize â”€â”€
   function resizeImage(file) {
     return new Promise(function(resolve) {
       var reader = new FileReader();
@@ -250,7 +214,7 @@
     });
   }
 
-  // ── Load portfolio from GitHub ──
+  // â”€â”€ Load portfolio from GitHub â”€â”€
   function loadPortfolio() {
     showStatus('Caricamento dati...', 'info');
     var p1 = ghApi('data/portfolio.json')
@@ -269,30 +233,14 @@
         pendingImages = {};
       });
 
-    var p2 = ghApi('data/showcase.json')
-      .then(function(res) {
-        if (res.ok) return res.json();
-        throw new Error('Not found');
-      })
-      .then(function(data) {
-        showcaseSha = data.sha;
-        showcase = JSON.parse(base64ToUtf8(data.content));
-        pendingShowcaseImages = {};
-      })
-      .catch(function() {
-        showcase = [];
-        showcaseSha = null;
-        pendingShowcaseImages = {};
-      });
-
-    return Promise.all([p1, p2]).then(function() {
+    return p1.then(function() {
       renderItems();
-      renderShowcase();
-      showStatus('Dati caricati (' + portfolio.length + ' progetti, ' + showcase.length + ' showcase)', 'success');
+      updateLimitMsg();
+      showStatus('Dati caricati (' + portfolio.length + '/' + MAX_PHOTOS + ' progetti)', 'success');
     });
   }
 
-  // ── Render items ──
+  // â”€â”€ Render items â”€â”€
   function renderItems() {
     var list = document.getElementById('projectsList');
     list.innerHTML = '';
@@ -319,7 +267,7 @@
         '</div>' +
         '<div class="fields">' +
           '<div><label>Titolo</label><input type="text" data-field="title" value="' + escapeHtml(item.title) + '"></div>' +
-          '<div><label>Categoria</label><input type="text" data-field="category" value="' + escapeHtml(item.category) + '" placeholder="Es: Evento · Milano"></div>' +
+          '<div><label>Categoria</label><input type="text" data-field="category" value="' + escapeHtml(item.category) + '" placeholder="Es: Evento Â· Milano"></div>' +
           '<div><label>Descrizione</label><textarea data-field="description">' + escapeHtml(item.description) + '</textarea></div>' +
           '<div><label>Colore placeholder</label><select class="gradient-select" data-field="gradient">' +
             '<option value="concert"' + (item.gradient === 'concert' ? ' selected' : '') + '>Oro (Concerti)</option>' +
@@ -331,7 +279,7 @@
         '<div class="card-actions">' +
           '<div class="card-order">' +
             '<button title="Sposta su" data-move="up" data-index="' + i + '">&#9650;</button>' +
-            '<button title="Sposta giù" data-move="down" data-index="' + i + '">&#9660;</button>' +
+            '<button title="Sposta giÃ¹" data-move="down" data-index="' + i + '">&#9660;</button>' +
           '</div>' +
           '<button class="btn btn-danger" data-delete="' + i + '">Elimina</button>' +
         '</div>';
@@ -397,6 +345,7 @@
           });
           pendingImages = newPending;
           renderItems();
+          updateLimitMsg();
         }
       });
     });
@@ -424,92 +373,7 @@
     });
   }
 
-  // ── Render showcase ──
-  function renderShowcase() {
-    var list = document.getElementById('showcaseList');
-    list.innerHTML = '';
-
-    showcase.forEach(function(item, i) {
-      var card = document.createElement('div');
-      card.className = 'showcase-card-admin';
-
-      var imgSrc = '';
-      if (pendingShowcaseImages[i]) {
-        imgSrc = 'data:image/jpeg;base64,' + pendingShowcaseImages[i];
-      } else if (item.image) {
-        imgSrc = item.image;
-      }
-
-      card.innerHTML =
-        '<button class="sc-delete" data-sc-delete="' + i + '">&times;</button>' +
-        '<div class="img-area" data-sc-index="' + i + '">' +
-          (imgSrc ? '<img src="' + imgSrc + '" alt="Preview">' : '') +
-          '<div class="upload-hint"' + (imgSrc ? ' style="display:none"' : '') + '>' +
-            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>' +
-            'Carica foto' +
-          '</div>' +
-          '<input type="file" accept="image/*">' +
-        '</div>' +
-        '<div class="sc-fields">' +
-          '<label>Titolo</label>' +
-          '<input type="text" data-sc-field="title" value="' + escapeHtml(item.title) + '">' +
-        '</div>';
-
-      list.appendChild(card);
-    });
-
-    bindShowcaseEvents();
-  }
-
-  function bindShowcaseEvents() {
-    document.querySelectorAll('.showcase-card-admin .img-area').forEach(function(area) {
-      var input = area.querySelector('input[type=file]');
-      area.addEventListener('click', function(e) {
-        if (e.target.tagName !== 'INPUT') input.click();
-      });
-      input.addEventListener('change', function() {
-        if (!input.files.length) return;
-        var idx = parseInt(area.getAttribute('data-sc-index'));
-        resizeImage(input.files[0]).then(function(result) {
-          if (result.tooSmall) {
-            showStatus('Immagine piccola (' + result.width + 'x' + result.height + 'px). Consigliato almeno 800x1200px.', 'error');
-          }
-          pendingShowcaseImages[idx] = result.base64;
-          var img = area.querySelector('img');
-          if (!img) { img = document.createElement('img'); img.alt = 'Preview'; area.appendChild(img); }
-          img.src = 'data:image/jpeg;base64,' + result.base64;
-          area.querySelector('.upload-hint').style.display = 'none';
-        });
-      });
-    });
-
-    document.querySelectorAll('[data-sc-field]').forEach(function(el) {
-      el.addEventListener('input', function() {
-        var card = el.closest('.showcase-card-admin');
-        var idx = Array.from(card.parentNode.children).indexOf(card);
-        showcase[idx].title = el.value;
-      });
-    });
-
-    document.querySelectorAll('[data-sc-delete]').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var idx = parseInt(btn.getAttribute('data-sc-delete'));
-        if (confirm('Eliminare "' + showcase[idx].title + '"?')) {
-          showcase.splice(idx, 1);
-          var newPending = {};
-          Object.keys(pendingShowcaseImages).forEach(function(k) {
-            var ki = parseInt(k);
-            if (ki < idx) newPending[ki] = pendingShowcaseImages[ki];
-            else if (ki > idx) newPending[ki - 1] = pendingShowcaseImages[ki];
-          });
-          pendingShowcaseImages = newPending;
-          renderShowcase();
-        }
-      });
-    });
-  }
-
-  // ── Publish ──
+  // â”€â”€ Publish â”€â”€
   function publish() {
     var btn = document.getElementById('publishBtn');
     btn.disabled = true;
@@ -563,46 +427,6 @@
       .then(function(data) {
         jsonSha = data.content.sha;
         pendingImages = {};
-
-        // Upload showcase images
-        var scIndices = Object.keys(pendingShowcaseImages);
-        function uploadScNext(i) {
-          if (i >= scIndices.length) return Promise.resolve();
-          var idx = parseInt(scIndices[i]);
-          var item = showcase[idx];
-          var filename = 'sc-' + slugify(item.title) + '-' + Date.now() + '.jpg';
-          var path = 'images/showcase/' + filename;
-          showStatus('Caricamento showcase ' + (i + 1) + '/' + scIndices.length + '...', 'info');
-          return ghApi(path, 'PUT', {
-            message: 'Upload showcase: ' + filename,
-            content: pendingShowcaseImages[idx],
-            branch: CONFIG.branch
-          }).then(function(res) {
-            if (!res.ok) throw new Error('Upload showcase fallito');
-            item.image = 'images/showcase/' + filename;
-            return uploadScNext(i + 1);
-          });
-        }
-        return uploadScNext(0);
-      })
-      .then(function() {
-        showStatus('Salvataggio showcase...', 'info');
-        var scContent = utf8ToBase64(JSON.stringify(showcase, null, 2));
-        var scBody = {
-          message: 'Aggiorna showcase',
-          content: scContent,
-          branch: CONFIG.branch
-        };
-        if (showcaseSha) scBody.sha = showcaseSha;
-        return ghApi('data/showcase.json', 'PUT', scBody);
-      })
-      .then(function(res) {
-        if (!res.ok) throw new Error('Salvataggio showcase fallito');
-        return res.json();
-      })
-      .then(function(data) {
-        showcaseSha = data.content.sha;
-        pendingShowcaseImages = {};
         showStatus('Pubblicato con successo! Il sito si aggiorna in ~30 secondi.', 'success');
       })
       .catch(function(err) {
@@ -614,7 +438,7 @@
       });
   }
 
-  // ── Login ──
+  // â”€â”€ Login â”€â”€
   document.getElementById('loginBtn').addEventListener('click', function() {
     var tk = document.getElementById('ghToken').value.trim();
     var errEl = document.getElementById('loginError');
@@ -651,8 +475,26 @@
     if (e.key === 'Enter') document.getElementById('loginBtn').click();
   });
 
-  // ── Add project ──
+  // â”€â”€ Update limit message â”€â”€
+  function updateLimitMsg() {
+    var msg = document.getElementById('limitMsg');
+    var btn = document.getElementById('addBtn');
+    msg.textContent = portfolio.length + '/' + MAX_PHOTOS + ' foto caricate';
+    if (portfolio.length >= MAX_PHOTOS) {
+      btn.style.display = 'none';
+      msg.style.color = '#FF6B35';
+    } else {
+      btn.style.display = '';
+      msg.style.color = '#888';
+    }
+  }
+
+  // â”€â”€ Add project â”€â”€
   document.getElementById('addBtn').addEventListener('click', function() {
+    if (portfolio.length >= MAX_PHOTOS) {
+      showStatus('Limite massimo di ' + MAX_PHOTOS + ' foto raggiunto.', 'error');
+      return;
+    }
     portfolio.push({
       title: 'Nuovo progetto',
       category: 'Categoria',
@@ -661,29 +503,12 @@
       gradient: 'concert'
     });
     renderItems();
+    updateLimitMsg();
     var list = document.getElementById('projectsList');
     list.lastElementChild.scrollIntoView({ behavior: 'smooth' });
   });
 
-  // ── Add showcase ──
-  document.getElementById('addShowcaseBtn').addEventListener('click', function() {
-    showcase.push({ title: 'Nuova foto', image: '' });
-    renderShowcase();
-    var list = document.getElementById('showcaseList');
-    list.lastElementChild.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  // ── Tab switching ──
-  document.querySelectorAll('.tab-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-      document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.getAttribute('data-tab')).classList.add('active');
-    });
-  });
-
-  // ── Publish & Reload & Logout ──
+  // â”€â”€ Publish & Reload & Logout â”€â”€
   document.getElementById('publishBtn').addEventListener('click', publish);
   document.getElementById('reloadBtn').addEventListener('click', loadPortfolio);
   document.getElementById('logoutBtn').addEventListener('click', function() {
@@ -694,7 +519,7 @@
     document.getElementById('ghToken').value = '';
   });
 
-  // ── Auto-login if token saved ──
+  // â”€â”€ Auto-login if token saved â”€â”€
   var savedToken = localStorage.getItem('ghToken');
   if (savedToken) {
     token = savedToken;
