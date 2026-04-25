@@ -398,4 +398,201 @@
     draw();
   })();
 
+  // ── i18n Language Switch ──
+  var translations = {
+    en: {
+      'nav.chi': 'About us',
+      'nav.servizi': 'Services',
+      'nav.progetti': 'Projects',
+      'nav.contatti': 'Contact',
+      'hero.tag': 'Stage Design & Lights · Media Server · Security',
+      'hero.title': 'We Design.<br>We Build.<br><em>We Illuminate.</em>',
+      'hero.sub': 'We turn ideas into extraordinary visual experiences. Cutting-edge technology and creative vision for events, concerts and television.',
+      'hero.cta1': 'Explore services',
+      'hero.cta2': 'Contact us',
+      'chi.label': 'About us / Chi siamo',
+      'chi.title': 'Born from experience,<br>driven by passion.',
+      'chi.mission': 'P2P Technology was founded to <strong>revolutionize the world of entertainment</strong>. We combine cutting-edge technology and creative vision for events, concerts and television.',
+      'chi.s1': 'Shows',
+      'chi.s2': 'Events',
+      'chi.s3': 'Concerts',
+      'chi.s4': 'Television',
+      'chi.s5': 'Trade Fairs & Stands',
+      'serv.label': 'Our services / I nostri servizi',
+      'serv.title': 'From vision to reality.',
+      'serv.h1': 'Design',
+      'serv.p1': 'We turn your ideas into detailed technical projects. Lighting design, 3D rendering and stage planning.',
+      'serv.h2': 'Build',
+      'serv.p2': 'We build and configure every element with the best tools in the industry, ensuring quality and safety.',
+      'serv.h3': 'Installation',
+      'serv.p3': 'Our technical team follows every phase on-site, ensuring flawless execution from setup to go-live.',
+      'serv.badge': 'Full service',
+      'sceno.title': 'Light is our language.',
+      'sceno.l1': 'Lighting design for stages and outdoor',
+      'sceno.l2': 'Custom-built scenic structures',
+      'sceno.l3': 'LED walls and video wall surfaces',
+      'sceno.l4': 'DMX control systems and show programming',
+      'sceno.l5': 'Static and dynamic LED strips — ArtNet management',
+      'sceno.l6': 'LED dots and scenic pixel mapping',
+      'sceno.l7': 'Custom scenic and decorative lighting',
+      'sceno.l8': 'Professional equipment rental and sales',
+      'sceno.qlabel': 'Creative possibilities',
+      'sceno.quote': '"Every idea deserves to be illuminated the right way."',
+      'media.title': 'Video that makes the difference.',
+      'media.desc': 'Professional management of real-time video content for concerts, events and TV productions. We can orchestrate any visual surface with absolute precision.',
+      'media.t1': 'Video mapping',
+      'media.t2': 'Real-time content generation',
+      'media.t3': 'Audio-video sync',
+      'media.t4': 'Multi-output management',
+      'media.t5': 'Integration with lighting control systems',
+      'sec.label': 'Security & Surveillance / Sicurezza',
+      'sec.title': 'Protecting what matters.',
+      'sec.desc1': '<strong>Security</strong> is an integral part of our services. We design and install alarm and video surveillance systems for venues, production facilities and commercial spaces, integrating the most advanced technology with our field experience.',
+      'sec.desc2': 'A single partner for entertainment and security.',
+      'sec.h1': 'Video Surveillance',
+      'sec.p1': 'IP, analog and hybrid CCTV systems. Remote management and cloud storage.',
+      'sec.h2': 'Alarm Systems',
+      'sec.p2': 'Anti-intrusion control panels, volumetric and perimeter sensors, real-time notifications.',
+      'sec.h3': 'Access Control',
+      'sec.p3': 'Badges, biometrics and integrated systems for venues and production spaces.',
+      'sec.h4': 'Maintenance',
+      'sec.p4': 'Preventive and corrective assistance with guaranteed fast response.',
+      'proj.label': 'Our work / I nostri lavori',
+      'proj.title': 'Projects that speak for themselves.',
+      'cont.label': 'Start your project / Inizia il tuo progetto',
+      'cont.title': 'Let\'s talk about your event.',
+      'cont.intro': 'We are ready to turn your idea into an unforgettable show.',
+      'cont.r1': 'Account Manager & CEO',
+      'cont.b1': 'The commercial and strategic point of reference. Coordinates client relations, business development and company vision.',
+      'cont.r2': 'Media Server & Stage Mgr',
+      'cont.b2': 'Visual content and media server specialist. Transforms surfaces into high-impact video canvases.',
+      'cont.r3': 'Stage Lighting Manager',
+      'cont.b3': 'Stage design expert. Plans and directs every lighting installation with precision and creativity.',
+      'cont.r4': 'Alarms & Surveillance Mgr',
+      'cont.b4': 'Specialist in integrated security systems. Ensures space protection with tailored solutions.',
+      'form.nameL': 'Name',
+      'form.nameP': 'Your name',
+      'form.emailP': 'email@example.com',
+      'form.msgL': 'Message',
+      'form.msgP': 'Describe your project...',
+      'form.send': 'Send message',
+      'footer.copy': '&copy; 2026 P2P Technology S.R.L. &mdash; all rights reserved &middot; <a href="privacy.html">Privacy Policy</a>',
+      'cookie.text': 'This site uses third-party services (Google Fonts, Formspree) that may collect data. See the <a href="privacy.html">Privacy Policy</a>.',
+      'cookie.btn': 'Got it'
+    },
+    it: {
+      'nav.chi': 'Chi siamo',
+      'nav.servizi': 'Servizi',
+      'nav.progetti': 'Progetti',
+      'nav.contatti': 'Contatti',
+      'hero.tag': 'Scenotecnica & Luci · Media Server · Sicurezza',
+      'hero.title': 'Progettiamo.<br>Realizziamo.<br><em>Illuminiamo.</em>',
+      'hero.sub': 'Trasformiamo idee in esperienze visive straordinarie. Tecnica d\'avanguardia e visione creativa per eventi, concerti e televisione.',
+      'hero.cta1': 'Scopri i servizi',
+      'hero.cta2': 'Contattaci',
+      'chi.label': 'Chi siamo / Who we are',
+      'chi.title': 'Nati dall\'esperienza,<br>mossi dalla passione.',
+      'chi.mission': 'P2P Technology nasce per <strong>rivoluzionare il mondo dello spettacolo</strong>. Combiniamo tecnica d\'avanguardia e visione creativa per eventi, concerti e televisione.',
+      'chi.s1': 'Spettacoli',
+      'chi.s2': 'Eventi',
+      'chi.s3': 'Concerti',
+      'chi.s4': 'Televisione',
+      'chi.s5': 'Fiere & Stand',
+      'serv.label': 'I nostri servizi / Our services',
+      'serv.title': 'Dalla visione alla realtà.',
+      'serv.h1': 'Progettazione',
+      'serv.p1': 'Trasformiamo le tue idee in progetti tecnici dettagliati. Design lighting, rendering 3D e planning scenotecnico.',
+      'serv.h2': 'Realizzazione',
+      'serv.p2': 'Costruiamo e configuriamo ogni elemento con i migliori strumenti del settore, assicurando qualità e sicurezza.',
+      'serv.h3': 'Installazione',
+      'serv.p3': 'Il nostro team tecnico segue ogni fase in loco, garantendo un\'esecuzione impeccabile dal montaggio al go-live.',
+      'serv.badge': 'Servizio completo',
+      'sceno.title': 'La luce è il nostro linguaggio.',
+      'sceno.l1': 'Lighting design per palcoscenici e outdoor',
+      'sceno.l2': 'Strutture scenografiche su misura',
+      'sceno.l3': 'LED wall e superfici videowall',
+      'sceno.l4': 'Sistemi di controllo DMX e programmazione show',
+      'sceno.l5': 'Strip LED statiche e dinamiche — gestione ArtNet',
+      'sceno.l6': 'Dot luminosi e pixel mapping scenografico',
+      'sceno.l7': 'Illuminotecnica scenografica e d\'arredo su misura',
+      'sceno.l8': 'Noleggio e vendita attrezzatura professionale',
+      'sceno.qlabel': 'Possibilità creative',
+      'sceno.quote': '"Ogni idea merita di essere illuminata nel modo giusto."',
+      'media.title': 'Il video che fa la differenza.',
+      'media.desc': 'Gestione professionale di contenuti video in tempo reale per concerti, eventi e produzioni TV. Siamo in grado di orchestrare qualsiasi superficie visiva con precisione assoluta.',
+      'media.t1': 'Mappatura video',
+      'media.t2': 'Generazione contenuti real-time',
+      'media.t3': 'Sincronizzazione audio-video',
+      'media.t4': 'Gestione multi-output',
+      'media.t5': 'Integrazione con sistemi di controllo luci',
+      'sec.label': 'Sicurezza & Videosorveglianza / Security Systems',
+      'sec.title': 'Proteggere ciò che conta.',
+      'sec.desc1': 'La <strong>sicurezza</strong> è parte integrante dei nostri servizi. Progettiamo e installiamo sistemi di allarme e videosorveglianza per venue, strutture produttive e spazi commerciali, integrando la tecnologia più avanzata con la nostra esperienza sul campo.',
+      'sec.desc2': 'Un unico interlocutore per spettacolo e sicurezza.',
+      'sec.h1': 'Videosorveglianza',
+      'sec.p1': 'Sistemi TVCC IP, analogici e ibridi. Gestione remota e archiviazione cloud.',
+      'sec.h2': 'Sistemi d\'Allarme',
+      'sec.p2': 'Centrali anti-intrusione, sensori volumetrici e perimetrali, notifiche real-time.',
+      'sec.h3': 'Controllo Accessi',
+      'sec.p3': 'Badge, biometria e sistemi integrati per venue e spazi produttivi.',
+      'sec.h4': 'Manutenzione',
+      'sec.p4': 'Assistenza preventiva e correttiva con intervento rapido garantito.',
+      'proj.label': 'I nostri lavori / Our work',
+      'proj.title': 'Progetti che parlano da soli.',
+      'cont.label': 'Inizia il tuo progetto / Start your project',
+      'cont.title': 'Parliamo del tuo evento.',
+      'cont.intro': 'Siamo pronti a trasformare la tua idea in uno spettacolo indimenticabile.',
+      'cont.r1': 'Account Manager & CEO',
+      'cont.b1': 'Il punto di riferimento commerciale e strategico. Coordina relazioni clienti, sviluppo business e visione aziendale.',
+      'cont.r2': 'Resp. Media Server & Sceno',
+      'cont.b2': 'Specialista di visual content e media server. Trasforma le superfici in canvas video di altissimo impatto.',
+      'cont.r3': 'Resp. Tecnico Scenoluminoso',
+      'cont.b3': 'Esperto di scenotecnica. Progetta e dirige ogni installazione luminosa con precisione e creatività.',
+      'cont.r4': 'Resp. Allarmi & Videosorveglianza',
+      'cont.b4': 'Tecnico specializzato in sistemi di sicurezza integrati. Garantisce la protezione degli spazi con soluzioni su misura.',
+      'form.nameL': 'Nome',
+      'form.nameP': 'Il tuo nome',
+      'form.emailP': 'email@esempio.it',
+      'form.msgL': 'Messaggio',
+      'form.msgP': 'Descrivi il tuo progetto...',
+      'form.send': 'Invia messaggio',
+      'footer.copy': '&copy; 2026 P2P Technology S.R.L. &mdash; tutti i diritti riservati &middot; <a href="privacy.html">Privacy Policy</a>',
+      'cookie.text': 'Questo sito utilizza servizi di terze parti (Google Fonts, Formspree) che potrebbero raccogliere dati. Consulta la <a href="privacy.html">Privacy Policy</a>.',
+      'cookie.btn': 'Ho capito'
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang] && translations[lang][key]) {
+        el.placeholder = translations[lang][key];
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLang(btn.getAttribute('data-lang'));
+    });
+  });
+
+  // Apply saved language
+  var savedLang = null;
+  try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+  if (savedLang && translations[savedLang]) {
+    setLang(savedLang);
+  }
+
 })();

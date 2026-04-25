@@ -30,11 +30,15 @@
     <div class="nav-overlay" aria-hidden="true"></div>
     <ul class="nav-links">
       <button class="nav-close" aria-label="Chiudi menu">&times;</button>
-      <li><a href="#chi-siamo">Chi siamo</a></li>
-      <li><a href="#servizi">Servizi</a></li>
-      <li><a href="#progetti">Progetti</a></li>
-      <li><a href="#contatti">Contatti</a></li>
+      <li><a href="#chi-siamo" data-i18n="nav.chi">Chi siamo</a></li>
+      <li><a href="#servizi" data-i18n="nav.servizi">Servizi</a></li>
+      <li><a href="#progetti" data-i18n="nav.progetti">Progetti</a></li>
+      <li><a href="#contatti" data-i18n="nav.contatti">Contatti</a></li>
     </ul>
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="it" aria-label="Italiano">🇮🇹</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧</button>
+    </div>
   </nav>
 
   <!-- ═══ HERO ═══ -->
@@ -45,12 +49,12 @@
     </div>
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-tag">Scenotecnica &amp; Luci · Media Server · Sicurezza</div>
-        <h1>Progettiamo.<br>Realizziamo.<br><em>Illuminiamo.</em></h1>
-        <p class="hero-sub">Trasformiamo idee in esperienze visive straordinarie. Tecnica d'avanguardia e visione creativa per eventi, concerti e televisione.</p>
+        <div class="hero-tag" data-i18n="hero.tag">Scenotecnica &amp; Luci · Media Server · Sicurezza</div>
+        <h1 data-i18n="hero.title">Progettiamo.<br>Realizziamo.<br><em>Illuminiamo.</em></h1>
+        <p class="hero-sub" data-i18n="hero.sub">Trasformiamo idee in esperienze visive straordinarie. Tecnica d'avanguardia e visione creativa per eventi, concerti e televisione.</p>
         <div class="hero-cta">
-          <a href="#servizi" class="btn-primary">Scopri i servizi</a>
-          <a href="#contatti" class="btn-secondary">Contattaci</a>
+          <a href="#servizi" class="btn-primary" data-i18n="hero.cta1">Scopri i servizi</a>
+          <a href="#contatti" class="btn-secondary" data-i18n="hero.cta2">Contattaci</a>
         </div>
       </div>
       <canvas class="hero-particles" id="heroParticles"></canvas>
@@ -60,46 +64,46 @@
   <!-- ═══ CHI SIAMO ═══ -->
   <section id="chi-siamo">
     <div class="fade-in">
-      <div class="section-label">Chi siamo / Who we are</div>
-      <div class="section-title">Nati dall'esperienza,<br>mossi dalla passione.</div>
-      <p class="about-mission">P2P Technology nasce per <strong>rivoluzionare il mondo dello spettacolo</strong>. Combiniamo tecnica d'avanguardia e visione creativa per eventi, concerti e televisione.</p>
+      <div class="section-label" data-i18n="chi.label">Chi siamo / Who we are</div>
+      <div class="section-title" data-i18n="chi.title">Nati dall'esperienza,<br>mossi dalla passione.</div>
+      <p class="about-mission" data-i18n="chi.mission">P2P Technology nasce per <strong>rivoluzionare il mondo dello spettacolo</strong>. Combiniamo tecnica d'avanguardia e visione creativa per eventi, concerti e televisione.</p>
       <div class="about-sectors">
-        <span>Spettacoli</span><span>Eventi</span><span>Concerti</span><span>Televisione</span><span>Fiere &amp; Stand</span>
+        <span data-i18n="chi.s1">Spettacoli</span><span data-i18n="chi.s2">Eventi</span><span data-i18n="chi.s3">Concerti</span><span data-i18n="chi.s4">Televisione</span><span data-i18n="chi.s5">Fiere &amp; Stand</span>
       </div>
     </div>
   </section>
 
   <!-- ═══ SERVIZI ═══ -->
   <section id="servizi">
-    <div class="section-label fade-in">I nostri servizi / Our services</div>
-    <div class="section-title fade-in">Dalla visione alla realtà.</div>
+    <div class="section-label fade-in" data-i18n="serv.label">I nostri servizi / Our services</div>
+    <div class="section-title fade-in" data-i18n="serv.title">Dalla visione alla realtà.</div>
     <div class="services-steps">
       <div class="step-list fade-in">
         <div class="step-item">
           <div class="step-num">01</div>
           <div>
-            <h3>Progettazione</h3>
-            <p>Trasformiamo le tue idee in progetti tecnici dettagliati. Design lighting, rendering 3D e planning scenotecnico.</p>
+            <h3 data-i18n="serv.h1">Progettazione</h3>
+            <p data-i18n="serv.p1">Trasformiamo le tue idee in progetti tecnici dettagliati. Design lighting, rendering 3D e planning scenotecnico.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">02</div>
           <div>
-            <h3>Realizzazione</h3>
-            <p>Costruiamo e configuriamo ogni elemento con i migliori strumenti del settore, assicurando qualità e sicurezza.</p>
+            <h3 data-i18n="serv.h2">Realizzazione</h3>
+            <p data-i18n="serv.p2">Costruiamo e configuriamo ogni elemento con i migliori strumenti del settore, assicurando qualità e sicurezza.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">03</div>
           <div>
-            <h3>Installazione</h3>
-            <p>Il nostro team tecnico segue ogni fase in loco, garantendo un'esecuzione impeccabile dal montaggio al go-live.</p>
+            <h3 data-i18n="serv.h3">Installazione</h3>
+            <p data-i18n="serv.p3">Il nostro team tecnico segue ogni fase in loco, garantendo un'esecuzione impeccabile dal montaggio al go-live.</p>
           </div>
         </div>
       </div>
       <div class="step-badge fade-in">
         <div class="badge-num">360°</div>
-        <div class="badge-label">Servizio completo</div>
+        <div class="badge-label" data-i18n="serv.badge">Servizio completo</div>
         <div class="badge-flow">Brief → Concept → Build → Install → Support</div>
       </div>
     </div>
@@ -110,22 +114,22 @@
     <div class="sceno-grid">
       <div class="fade-in">
         <div class="section-label">Scenotecnica &amp; Lighting Design</div>
-        <div class="section-title">La luce è il nostro linguaggio.</div>
+        <div class="section-title" data-i18n="sceno.title">La luce è il nostro linguaggio.</div>
         <ul class="sceno-list">
-          <li>Lighting design per palcoscenici e outdoor</li>
-          <li>Strutture scenografiche su misura</li>
-          <li>LED wall e superfici videowall</li>
-          <li>Sistemi di controllo DMX e programmazione show</li>
-          <li>Strip LED statiche e dinamiche — gestione ArtNet</li>
-          <li>Dot luminosi e pixel mapping scenografico</li>
-          <li>Illuminotecnica scenografica e d'arredo su misura</li>
-          <li>Noleggio e vendita attrezzatura professionale</li>
+          <li data-i18n="sceno.l1">Lighting design per palcoscenici e outdoor</li>
+          <li data-i18n="sceno.l2">Strutture scenografiche su misura</li>
+          <li data-i18n="sceno.l3">LED wall e superfici videowall</li>
+          <li data-i18n="sceno.l4">Sistemi di controllo DMX e programmazione show</li>
+          <li data-i18n="sceno.l5">Strip LED statiche e dinamiche — gestione ArtNet</li>
+          <li data-i18n="sceno.l6">Dot luminosi e pixel mapping scenografico</li>
+          <li data-i18n="sceno.l7">Illuminotecnica scenografica e d'arredo su misura</li>
+          <li data-i18n="sceno.l8">Noleggio e vendita attrezzatura professionale</li>
         </ul>
       </div>
       <div class="sceno-quote fade-in">
         <div class="quote-symbol">∞</div>
-        <div class="quote-label">Possibilità creative</div>
-        <blockquote>"Ogni idea merita di essere illuminata nel modo giusto."</blockquote>
+        <div class="quote-label" data-i18n="sceno.qlabel">Possibilità creative</div>
+        <blockquote data-i18n="sceno.quote">"Ogni idea merita di essere illuminata nel modo giusto."</blockquote>
       </div>
     </div>
   </section>
@@ -135,11 +139,11 @@
     <div class="media-grid">
       <div class="fade-in">
         <div class="section-label">Media Server &amp; Visual Content</div>
-        <div class="section-title">Il video che fa la differenza.</div>
+        <div class="section-title" data-i18n="media.title">Il video che fa la differenza.</div>
         <h3 class="media-subtitle">MEDIA SERVER</h3>
-        <p class="media-desc">Gestione professionale di contenuti video in tempo reale per concerti, eventi e produzioni TV. Siamo in grado di orchestrare qualsiasi superficie visiva con precisione assoluta.</p>
+        <p class="media-desc" data-i18n="media.desc">Gestione professionale di contenuti video in tempo reale per concerti, eventi e produzioni TV. Siamo in grado di orchestrare qualsiasi superficie visiva con precisione assoluta.</p>
         <div class="media-tags">
-          <span>Mappatura video</span><span>Generazione contenuti real-time</span><span>Sincronizzazione audio-video</span><span>Gestione multi-output</span><span>Integrazione con sistemi di controllo luci</span>
+          <span data-i18n="media.t1">Mappatura video</span><span data-i18n="media.t2">Generazione contenuti real-time</span><span data-i18n="media.t3">Sincronizzazione audio-video</span><span data-i18n="media.t4">Gestione multi-output</span><span data-i18n="media.t5">Integrazione con sistemi di controllo luci</span>
         </div>
       </div>
       <div class="media-tools fade-in">
@@ -157,10 +161,10 @@
   <section id="sicurezza">
     <div class="security-grid">
       <div class="fade-in">
-        <div class="section-label">Sicurezza &amp; Videosorveglianza / Security Systems</div>
-        <div class="section-title">Proteggere ciò che conta.</div>
-        <p class="security-desc">La <strong>sicurezza</strong> è parte integrante dei nostri servizi. Progettiamo e installiamo sistemi di allarme e videosorveglianza per venue, strutture produttive e spazi commerciali, integrando la tecnologia più avanzata con la nostra esperienza sul campo.</p>
-        <p class="security-desc">Un unico interlocutore per spettacolo e sicurezza.</p>
+        <div class="section-label" data-i18n="sec.label">Sicurezza &amp; Videosorveglianza / Security Systems</div>
+        <div class="section-title" data-i18n="sec.title">Proteggere ciò che conta.</div>
+        <p class="security-desc" data-i18n="sec.desc1">La <strong>sicurezza</strong> è parte integrante dei nostri servizi. Progettiamo e installiamo sistemi di allarme e videosorveglianza per venue, strutture produttive e spazi commerciali, integrando la tecnologia più avanzata con la nostra esperienza sul campo.</p>
+        <p class="security-desc" data-i18n="sec.desc2">Un unico interlocutore per spettacolo e sicurezza.</p>
         <div class="brand-badges">
           <span class="brand-badge">AJAX</span>
           <span class="brand-badge">URMET</span>
@@ -170,20 +174,20 @@
       </div>
       <div class="security-services fade-in">
         <div class="security-card">
-          <h4>Videosorveglianza</h4>
-          <p>Sistemi TVCC IP, analogici e ibridi. Gestione remota e archiviazione cloud.</p>
+          <h4 data-i18n="sec.h1">Videosorveglianza</h4>
+          <p data-i18n="sec.p1">Sistemi TVCC IP, analogici e ibridi. Gestione remota e archiviazione cloud.</p>
         </div>
         <div class="security-card">
-          <h4>Sistemi d'Allarme</h4>
-          <p>Centrali anti-intrusione, sensori volumetrici e perimetrali, notifiche real-time.</p>
+          <h4 data-i18n="sec.h2">Sistemi d'Allarme</h4>
+          <p data-i18n="sec.p2">Centrali anti-intrusione, sensori volumetrici e perimetrali, notifiche real-time.</p>
         </div>
         <div class="security-card">
-          <h4>Controllo Accessi</h4>
-          <p>Badge, biometria e sistemi integrati per venue e spazi produttivi.</p>
+          <h4 data-i18n="sec.h3">Controllo Accessi</h4>
+          <p data-i18n="sec.p3">Badge, biometria e sistemi integrati per venue e spazi produttivi.</p>
         </div>
         <div class="security-card">
-          <h4>Manutenzione</h4>
-          <p>Assistenza preventiva e correttiva con intervento rapido garantito.</p>
+          <h4 data-i18n="sec.h4">Manutenzione</h4>
+          <p data-i18n="sec.p4">Assistenza preventiva e correttiva con intervento rapido garantito.</p>
         </div>
       </div>
     </div>
@@ -193,8 +197,8 @@
   <section id="progetti">
     <div class="portfolio-intro fade-in">
       <div>
-        <div class="section-label">I nostri lavori / Our work</div>
-        <div class="section-title">Progetti che parlano da soli.</div>
+        <div class="section-label" data-i18n="proj.label">I nostri lavori / Our work</div>
+        <div class="section-title" data-i18n="proj.title">Progetti che parlano da soli.</div>
       </div>
     </div>
     <div class="slider-wrapper">
@@ -214,16 +218,16 @@
   <section id="contatti">
     <div class="contact-grid">
       <div>
-        <div class="section-label fade-in">Inizia il tuo progetto / Start your project</div>
-        <div class="section-title fade-in">Parliamo del tuo evento.</div>
+        <div class="section-label fade-in" data-i18n="cont.label">Inizia il tuo progetto / Start your project</div>
+        <div class="section-title fade-in" data-i18n="cont.title">Parliamo del tuo evento.</div>
         <div class="contact-info fade-in">
-          <p>Siamo pronti a trasformare la tua idea in uno spettacolo indimenticabile.</p>
+          <p data-i18n="cont.intro">Siamo pronti a trasformare la tua idea in uno spettacolo indimenticabile.</p>
         </div>
         <div class="contact-item"><div class="contact-dot"></div><div><strong>Email</strong><a href="mailto:p2ptechnologysrl@gmail.com">p2ptechnologysrl@gmail.com</a></div></div>
-        <div class="contact-item"><div class="contact-dot"></div><div><strong>Andrea Pellegrini</strong><span class="contact-role">Account Manager &amp; CEO</span><p class="contact-bio">Il punto di riferimento commerciale e strategico. Coordina relazioni clienti, sviluppo business e visione aziendale.</p><a href="tel:+393519948882">+39 351 994 8882</a></div></div>
-        <div class="contact-item"><div class="contact-dot"></div><div><strong>Alessandro Testa</strong><span class="contact-role">Resp. Media Server &amp; Sceno</span><p class="contact-bio">Specialista di visual content e media server. Trasforma le superfici in canvas video di altissimo impatto.</p><a href="tel:+393479631614">+39 347 963 1614</a></div></div>
-        <div class="contact-item"><div class="contact-dot"></div><div><strong>Flaviano Lancia</strong><span class="contact-role">Resp. Tecnico Scenoluminoso</span><p class="contact-bio">Esperto di scenotecnica. Progetta e dirige ogni installazione luminosa con precisione e creatività.</p><a href="tel:+393318073753">+39 331 807 3753</a></div></div>
-        <div class="contact-item"><div class="contact-dot"></div><div><strong>Mirco Ruscito</strong><span class="contact-role">Resp. Allarmi &amp; Videosorveglianza</span><p class="contact-bio">Tecnico specializzato in sistemi di sicurezza integrati. Garantisce la protezione degli spazi con soluzioni su misura.</p><a href="tel:+393383555328">+39 338 355 5328</a></div></div>
+        <div class="contact-item"><div class="contact-dot"></div><div><strong>Andrea Pellegrini</strong><span class="contact-role" data-i18n="cont.r1">Account Manager &amp; CEO</span><p class="contact-bio" data-i18n="cont.b1">Il punto di riferimento commerciale e strategico. Coordina relazioni clienti, sviluppo business e visione aziendale.</p><a href="tel:+393519948882">+39 351 994 8882</a></div></div>
+        <div class="contact-item"><div class="contact-dot"></div><div><strong>Alessandro Testa</strong><span class="contact-role" data-i18n="cont.r2">Resp. Media Server &amp; Sceno</span><p class="contact-bio" data-i18n="cont.b2">Specialista di visual content e media server. Trasforma le superfici in canvas video di altissimo impatto.</p><a href="tel:+393479631614">+39 347 963 1614</a></div></div>
+        <div class="contact-item"><div class="contact-dot"></div><div><strong>Flaviano Lancia</strong><span class="contact-role" data-i18n="cont.r3">Resp. Tecnico Scenoluminoso</span><p class="contact-bio" data-i18n="cont.b3">Esperto di scenotecnica. Progetta e dirige ogni installazione luminosa con precisione e creatività.</p><a href="tel:+393318073753">+39 331 807 3753</a></div></div>
+        <div class="contact-item"><div class="contact-dot"></div><div><strong>Mirco Ruscito</strong><span class="contact-role" data-i18n="cont.r4">Resp. Allarmi &amp; Videosorveglianza</span><p class="contact-bio" data-i18n="cont.b4">Tecnico specializzato in sistemi di sicurezza integrati. Garantisce la protezione degli spazi con soluzioni su misura.</p><a href="tel:+393383555328">+39 338 355 5328</a></div></div>
         <div class="contact-social fade-in">
           <a href="https://www.instagram.com/p2p_technology_srl/" target="_blank" rel="noopener">@P2P_TECHNOLOGY_SRL</a>
           <a href="https://www.tiktok.com/@p2p.technology" target="_blank" rel="noopener">@p2p.technology</a>
@@ -231,33 +235,33 @@
       </div>
       <form class="contact-form" id="contactForm" novalidate>
         <div class="form-group">
-          <label for="field-nome">Nome</label>
-          <input type="text" id="field-nome" name="nome" placeholder="Il tuo nome" required>
+          <label for="field-nome" data-i18n="form.nameL">Nome</label>
+          <input type="text" id="field-nome" name="nome" data-i18n-placeholder="form.nameP" placeholder="Il tuo nome" required>
         </div>
         <div class="form-group">
           <label for="field-email">Email</label>
-          <input type="email" id="field-email" name="email" placeholder="email@esempio.it" required>
+          <input type="email" id="field-email" name="email" data-i18n-placeholder="form.emailP" placeholder="email@esempio.it" required>
         </div>
         <div class="form-group">
-          <label for="field-messaggio">Messaggio</label>
-          <textarea id="field-messaggio" name="messaggio" placeholder="Descrivi il tuo progetto..." required></textarea>
+          <label for="field-messaggio" data-i18n="form.msgL">Messaggio</label>
+          <textarea id="field-messaggio" name="messaggio" data-i18n-placeholder="form.msgP" placeholder="Descrivi il tuo progetto..." required></textarea>
         </div>
         <div class="form-status" id="formStatus" role="alert"></div>
-        <button type="submit" class="btn-primary" style="align-self:flex-start">Invia messaggio</button>
+        <button type="submit" class="btn-primary" data-i18n="form.send" style="align-self:flex-start">Invia messaggio</button>
       </form>
     </div>
   </section>
 
   <footer>
     <div class="footer-logo">P2P <span>TECHNOLOGY</span> S.R.L.</div>
-    <div class="footer-copy">&copy; 2026 P2P Technology S.R.L. &mdash; tutti i diritti riservati &middot; <a href="privacy.html">Privacy Policy</a></div>
+    <div class="footer-copy" data-i18n="footer.copy">&copy; 2026 P2P Technology S.R.L. &mdash; tutti i diritti riservati &middot; <a href="privacy.html">Privacy Policy</a></div>
   </footer>
 
 </div>
 
 <div class="cookie-banner" id="cookieBanner">
-  <p>Questo sito utilizza servizi di terze parti (Google Fonts, Formspree) che potrebbero raccogliere dati. Consulta la <a href="privacy.html">Privacy Policy</a>.</p>
-  <button id="cookieAccept">Ho capito</button>
+  <p data-i18n="cookie.text">Questo sito utilizza servizi di terze parti (Google Fonts, Formspree) che potrebbero raccogliere dati. Consulta la <a href="privacy.html">Privacy Policy</a>.</p>
+  <button id="cookieAccept" data-i18n="cookie.btn">Ho capito</button>
 </div>
 
 <script src="js/main.js"></script>

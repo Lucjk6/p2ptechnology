@@ -68,6 +68,29 @@ nav {
 .nav-links a:hover,
 .nav-links a:focus-visible { color: #FF6B35; }
 
+/* Language switch */
+.lang-switch {
+  display: flex;
+  gap: 6px;
+  margin-left: 24px;
+}
+.lang-btn {
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 4px;
+  opacity: 0.45;
+  transition: opacity 0.3s, border-color 0.3s;
+}
+.lang-btn:hover { opacity: 0.8; }
+.lang-btn.active {
+  opacity: 1;
+  border-color: #FF6B35;
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -860,6 +883,8 @@ footer {
   nav { padding: 16px 24px; }
 
   .nav-toggle { display: block; }
+
+  .lang-switch { margin-left: auto; margin-right: 12px; }
 
   .nav-links {
     position: fixed;
