@@ -15,18 +15,27 @@
 
   <nav role="navigation" aria-label="Navigazione principale">
     <a href="index.html" class="logo" style="text-decoration:none">P2P <span>TECHNOLOGY</span></a>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-overlay" aria-hidden="true"></div>
     <ul class="nav-links">
-      <li><a href="index.html#chi-siamo">Chi siamo</a></li>
-      <li><a href="index.html#servizi">Servizi</a></li>
-      <li><a href="index.html#progetti">Progetti</a></li>
-      <li><a href="index.html#contatti">Contatti</a></li>
+      <button class="nav-close" aria-label="Chiudi menu">&times;</button>
+      <li><a href="index.html#chi-siamo" data-i18n="nav.chi">Chi siamo</a></li>
+      <li><a href="index.html#servizi" data-i18n="nav.servizi">Servizi</a></li>
+      <li><a href="index.html#progetti" data-i18n="nav.progetti">Progetti</a></li>
+      <li><a href="index.html#contatti" data-i18n="nav.contatti">Contatti</a></li>
     </ul>
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="it" aria-label="Italiano">🇮🇹</button>
+      <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧</button>
+    </div>
   </nav>
 
   <section class="privacy-page">
-    <div class="section-label">Legale</div>
+    <div class="section-label" data-i18n="priv.label">Legale</div>
     <div class="section-title">Privacy Policy</div>
-    <div class="privacy-content">
+    <div class="privacy-content" id="privacyIT">
 
       <p><strong>Ultimo aggiornamento:</strong> 15 aprile 2026</p>
 
@@ -80,13 +89,113 @@
       <p>Ci riserviamo il diritto di aggiornare questa informativa. La data dell'ultimo aggiornamento è indicata in alto.</p>
 
     </div>
+    <div class="privacy-content" id="privacyEN" style="display:none">
+
+      <p><strong>Last updated:</strong> April 15, 2026</p>
+
+      <h2>1. Data Controller</h2>
+      <p>P2P Technology — Italy<br>
+      Email: info@p2ptechnology.it</p>
+
+      <h2>2. Data Collected</h2>
+      <p>We collect personal data that you voluntarily provide through the contact form on our website:</p>
+      <ul>
+        <li>Name</li>
+        <li>Email address</li>
+        <li>Message content</li>
+      </ul>
+
+      <h2>3. Purpose of Processing</h2>
+      <p>Data is used exclusively to:</p>
+      <ul>
+        <li>Respond to your information or quote requests</li>
+        <li>Manage communications related to our services</li>
+      </ul>
+
+      <h2>4. Legal Basis</h2>
+      <p>Processing is based on your consent (Art. 6(1)(a) GDPR) and on the performance of pre-contractual measures (Art. 6(1)(b) GDPR).</p>
+
+      <h2>5. Third-Party Services</h2>
+      <h3>Google Fonts</h3>
+      <p>This site uses Google Fonts to load typefaces. When you visit the site, your browser connects to Google servers (USA), transmitting your IP address. For more information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+
+      <h3>Formspree</h3>
+      <p>The contact form uses the Formspree service to send messages. Data entered in the form is transmitted to Formspree servers. For more information: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Formspree Privacy Policy</a>.</p>
+
+      <h2>6. Data Retention</h2>
+      <p>Data collected through the contact form is retained for the time necessary to handle your request and in any case no longer than 12 months from receipt.</p>
+
+      <h2>7. Your Rights</h2>
+      <p>Under the GDPR you have the right to:</p>
+      <ul>
+        <li>Access your personal data</li>
+        <li>Rectify inaccurate data</li>
+        <li>Request data deletion</li>
+        <li>Object to processing</li>
+        <li>Request data portability</li>
+      </ul>
+      <p>To exercise your rights, write to: <strong>info@p2ptechnology.it</strong></p>
+
+      <h2>8. Cookies</h2>
+      <p>This site does not use its own profiling cookies. Third-party technical cookies (Google Fonts) necessary for the site's operation may be set.</p>
+
+      <h2>9. Changes</h2>
+      <p>We reserve the right to update this policy. The date of the last update is shown above.</p>
+
+    </div>
   </section>
 
   <footer>
     <div class="footer-logo">P2P <span>TECHNOLOGY</span></div>
-    <div class="footer-copy">&copy; 2026 P2P Technology &mdash; tutti i diritti riservati</div>
+    <div class="footer-copy" data-i18n="priv.footer">&copy; 2026 P2P Technology &mdash; tutti i diritti riservati</div>
   </footer>
 
 </div>
+<script>
+(function() {
+  'use strict';
+  var translations = {
+    en: {
+      'nav.chi': 'About us', 'nav.servizi': 'Services', 'nav.progetti': 'Projects', 'nav.contatti': 'Contact',
+      'priv.label': 'Legal', 'priv.footer': '&copy; 2026 P2P Technology &mdash; all rights reserved'
+    },
+    it: {
+      'nav.chi': 'Chi siamo', 'nav.servizi': 'Servizi', 'nav.progetti': 'Progetti', 'nav.contatti': 'Contatti',
+      'priv.label': 'Legale', 'priv.footer': '&copy; 2026 P2P Technology &mdash; tutti i diritti riservati'
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    document.getElementById('privacyIT').style.display = lang === 'it' ? '' : 'none';
+    document.getElementById('privacyEN').style.display = lang === 'en' ? '' : 'none';
+    try { localStorage.setItem('lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+  });
+
+  // Mobile nav
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  var overlay = document.querySelector('.nav-overlay');
+  var close = document.querySelector('.nav-close');
+  if (toggle) toggle.addEventListener('click', function() { links.classList.add('open'); overlay.classList.add('open'); });
+  if (close) close.addEventListener('click', function() { links.classList.remove('open'); overlay.classList.remove('open'); });
+  if (overlay) overlay.addEventListener('click', function() { links.classList.remove('open'); overlay.classList.remove('open'); });
+
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch(e) {}
+  if (saved && translations[saved]) setLang(saved);
+})();
+</script>
 </body>
 </html>
