@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Sitemap: https://p2ptechnology.vercel.app/sitemap.xml
+Disallow: /api/
+Sitemap: https://technologyp2p.it/sitemap.xml
