@@ -70,8 +70,8 @@
     "gradient": "led"
   },
   {
-    "title": "Spirale LED",
-    "title_en": "LED Spiral",
+    "title": "Pedana con profilo led ",
+    "title_en": "Led platform",
     "category": "Installazione",
     "category_en": "Installation",
     "description": "",
@@ -80,8 +80,8 @@
     "gradient": "fashion"
   },
   {
-    "title": "Foresta LED",
-    "title_en": "LED Forest",
+    "title": "Tubi led",
+    "title_en": "Led tube",
     "category": "Installazione",
     "category_en": "Installation",
     "description": "",
@@ -108,16 +108,6 @@
     "description_en": "",
     "image": "images/portfolio/IMG_0078.JPG",
     "gradient": "concert"
-  },
-  {
-    "title": "Lounge Bar",
-    "title_en": "Lounge Bar",
-    "category": "Evento",
-    "category_en": "Event",
-    "description": "",
-    "description_en": "",
-    "image": "images/portfolio/IMG_0129.JPG",
-    "gradient": "fashion"
   },
   {
     "title": "Color Hotel",
