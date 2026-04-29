@@ -118,5 +118,15 @@
     "description_en": "",
     "image": "images/portfolio/PHOTO-2026-04-25-16-32-14.jpg",
     "gradient": "expo"
+  },
+  {
+    "title": "Pianoforte con strip led Dinamico",
+    "title_en": "Piano with Dynamic led strip",
+    "category": "Categoria",
+    "category_en": "Category",
+    "description": "Descrizione del progetto...",
+    "description_en": "Project description...",
+    "image": "images/portfolio/pianoforte-con-strip-led-dinamico-1777455166550.jpg",
+    "gradient": "concert"
   }
 ]
