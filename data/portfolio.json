@@ -128,5 +128,15 @@
     "description_en": "Project description...",
     "image": "images/portfolio/pianoforte-con-strip-led-dinamico-1777455166550.jpg",
     "gradient": "concert"
+  },
+  {
+    "title": "Urmet PTZ",
+    "title_en": "Urmet PTZ",
+    "category": "Videosorveglianza ",
+    "category_en": "Video surveillance",
+    "description": "Impianto di Videosorveglianza con AI",
+    "description_en": "Video surveillance system with AI",
+    "image": "images/portfolio/urmet-ptz-1778418585200.jpg",
+    "gradient": "concert"
   }
 ]
