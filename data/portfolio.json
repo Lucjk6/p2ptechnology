@@ -138,5 +138,15 @@
     "description_en": "Video surveillance system with AI",
     "image": "images/portfolio/urmet-ptz-1778418585200.jpg",
     "gradient": "concert"
+  },
+  {
+    "title": "Convention con flex neon led ",
+    "title_en": "Convention with neon flex led ",
+    "category": "Convention",
+    "category_en": "Convention",
+    "description": "Descrizione del progetto...",
+    "description_en": "Project description...",
+    "image": "images/portfolio/convention-con-flex-neon-led-1783764143783.jpg",
+    "gradient": "concert"
   }
 ]
